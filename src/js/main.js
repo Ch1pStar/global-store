@@ -1,6 +1,5 @@
-function get(callback, url='src/mock/settings.json') {
-	fetch(url).then((res)=>res.json()).then((data)=>callback(data.result));
-}
+function get(callback, url='src/mock/settings.json') {fetch(url).then((res)=>res.json()).then((data)=>callback(data.result));}
+
 document.addEventListener('DOMContentLoaded', () => get(loaded));
 
 function loaded(data){
@@ -10,10 +9,10 @@ function loaded(data){
 	const debug = document.querySelector('.debug-text');
 	const btn = document.querySelector('.debug-update');
 
-	debug.value = format(JSON.stringify(data));
-	debug.addEventListener('paste', (e)=> updateFromString(e.clipboardData.getData('Text')));
+	debug.value = JSON.stringify({success: true, result: data});
+	debug.addEventListener('paste', (e) => updateFromString(e.clipboardData.getData('Text')));
 
-	btn.addEventListener('click', ()=> updateFromString(debug.value));
+	btn.addEventListener('click', () => updateFromString(debug.value));
 
 	window.store = store;
 }
@@ -21,6 +20,12 @@ function loaded(data){
 function updateFromString(state) {
 	store.dispatch({type:'update', state: JSON.parse(state).result})
 }
+
+function goHot() { get((state)=>{
+		store.dispatch({type:'update', state});
+	}, 'src/mock/hot.json');
+}
+
 
 function reducer(state, action) {
 	console.log(action);
@@ -104,6 +109,8 @@ class Timer extends Component{
 
 		this._startSpan.innerText = `Starts in: ${this._formatRemaining(this._total - this._duration)}`;
 		this._endSpan.innerText = `Ends in: ${this._formatRemaining(this._total)}`;
+
+		if(this._hot && !this._endSpan.classList.contains('hot')) this._endSpan.classList.add('hot');
 	}
 
 
@@ -118,6 +125,7 @@ class Timer extends Component{
 		const now = moment(state.currentTime);
 		const start = moment(state.startTime);
 		const end = moment(state.endTime);
+		const hotMs = end - moment(state.hotTime);
 		const duration = end.valueOf() - start.valueOf();
 		let total = end.valueOf() - now.valueOf();
 		let prev = performance.now();
@@ -130,6 +138,7 @@ class Timer extends Component{
 			prev = current;
 			total -= diff;
 			this._total = parseInt(total, 10);
+			this._hot = this._total < hotMs;
 			this.render();
 		}
 
@@ -208,40 +217,3 @@ class Rewards extends Component{
 
 
 // -------------------- UTIL ---------------------
-// 
-
-function format(fmt) {
-  var re = /(%?)(%([jds]))/g
-    , args = Array.prototype.slice.call(arguments, 1);
-  if(args.length) {
-    fmt = fmt.replace(re, function(match, escaped, ptn, flag) {
-      var arg = args.shift();
-      switch(flag) {
-        case 's':
-          arg = '' + arg;
-          break;
-        case 'd':
-          arg = Number(arg);
-          break;
-        case 'j':
-          arg = JSON.stringify(arg);
-          break;
-      }
-      if(!escaped) {
-        return arg; 
-      }
-      args.unshift(arg);
-      return match;
-    })
-  }
-
-  // arguments remain after formatting
-  if(args.length) {
-    fmt += ' ' + args.join(' ');
-  }
-
-  // update escaped %% values
-  fmt = fmt.replace(/%{2,2}/g, '%');
-
-  return '' + fmt;
-}

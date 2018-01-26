@@ -28,6 +28,10 @@
         .component-wrapper+.component-wrapper{
             margin-top: 30px;
         }
+
+        span.hot{
+            color: #ff77aa;
+        }
     </style>
 </head>
 <body>
@@ -35,6 +39,7 @@
 
 <div class="debug-wrapper">
     <button class="debug-update">Update</button>
+    <button class="debug-hot" onclick="javascript: goHot();">Hot</button>
     <textarea class="debug-text"></textarea>
 </div>
 
