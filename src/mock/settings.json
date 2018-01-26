@@ -1,0 +1,76 @@
+{
+   "success":true,
+   "result":[
+      {
+         "title":"Initial tournament title",
+         "type":"points",
+         "status":"pending",
+         "games":[
+            "DragonsLuck",
+            "WildSpartans"
+         ],
+         "currencies":[
+            "USD",
+            "GBP"
+         ],
+         "stakeMin":"10.00",
+         "stakeMax":"1000.00",
+         "enrollFee":"10.00",
+         "timeStart":"2018-01-10 00:00:00",
+         "timeEnd":"2018-03-10 00:00:00",
+         "timeOfferingEnd":"2018-03-10 00:00:00",
+         "rewards":[
+            {
+               "from":1,
+               "to":1,
+               "places":1,
+               "amount":"20.00",
+               "currency":"USD"
+            },
+            {
+               "from":2,
+               "to":2,
+               "places":1,
+               "amount":"10.00",
+               "currency":"USD"
+            }
+         ],
+         "leaderboard":{
+            "leaders":[
+               {
+                  "displayName":"User 1-1",
+                  "points":104638,
+                  "place":1
+               },
+               {
+                  "displayName":"User 1-81549",
+                  "points":100000,
+                  "place":2
+               },
+               {
+                  "displayName":"User 1-91456",
+                  "points":100000,
+                  "place":3
+               }
+            ],
+            "personal":[
+               {
+                  "displayName":"User 1-1",
+                  "points":104638,
+                  "place":1
+               },
+               {
+                  "displayName":"User 1-81549",
+                  "points":100000,
+                  "place":2
+               },
+               {
+                  "displayName":"User 1-91456",
+                  "points":100000,
+                  "place":3
+               }
+            ]
+         }
+      }
+   ]
+}
