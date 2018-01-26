@@ -10,6 +10,7 @@ function loaded(data){
 	const debug = document.querySelector('.debug-text');
 	const btn = document.querySelector('.debug-update');
 
+	debug.value = format(JSON.stringify(data));
 	debug.addEventListener('paste', (e)=> updateFromString(e.clipboardData.getData('Text')));
 
 	btn.addEventListener('click', ()=> updateFromString(debug.value));
@@ -22,7 +23,7 @@ function updateFromString(state) {
 }
 
 function reducer(state, action) {
-	console.error(action);
+	console.log(action);
 
 	switch(action.type) {
 		case '@@redux/INIT':
@@ -101,8 +102,8 @@ class Timer extends Component{
 	render() {
 		if(!this._inner) return;
 
-		this._startSpan.innerText = `Starts in - ${this._formatRemaining(this._total - this._duration)}`;
-		this._endSpan.innerText = `Ends in - ${this._formatRemaining(this._total)}`;
+		this._startSpan.innerText = `Starts in: ${this._formatRemaining(this._total - this._duration)}`;
+		this._endSpan.innerText = `Ends in: ${this._formatRemaining(this._total)}`;
 	}
 
 
@@ -138,11 +139,14 @@ class Timer extends Component{
 	}
 
 	_formatRemaining(ms) {
+		if(ms <= 0) return '-------------DONE-------------------';
+
 		const hours = parseInt(ms/HOUR);
 		const minutes = parseInt((ms%HOUR)/MINUTE);
 		const seconds = parseInt(((ms%HOUR)%MINUTE)/SECOND);
+		const msLeft = parseInt(((ms%HOUR)%MINUTE)%seconds)
 
-		return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+		return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${msLeft}`;
 	}
 
 	clearCnt(){
@@ -199,4 +203,45 @@ class Rewards extends Component{
 	clearCnt(){
 		this._container.innerText = '-----------Payouts-----------';
 	}
+}
+
+
+
+// -------------------- UTIL ---------------------
+// 
+
+function format(fmt) {
+  var re = /(%?)(%([jds]))/g
+    , args = Array.prototype.slice.call(arguments, 1);
+  if(args.length) {
+    fmt = fmt.replace(re, function(match, escaped, ptn, flag) {
+      var arg = args.shift();
+      switch(flag) {
+        case 's':
+          arg = '' + arg;
+          break;
+        case 'd':
+          arg = Number(arg);
+          break;
+        case 'j':
+          arg = JSON.stringify(arg);
+          break;
+      }
+      if(!escaped) {
+        return arg; 
+      }
+      args.unshift(arg);
+      return match;
+    })
+  }
+
+  // arguments remain after formatting
+  if(args.length) {
+    fmt += ' ' + args.join(' ');
+  }
+
+  // update escaped %% values
+  fmt = fmt.replace(/%{2,2}/g, '%');
+
+  return '' + fmt;
 }
