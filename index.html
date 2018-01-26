@@ -3,10 +3,40 @@
 <head>
 	<title>lel</title>
 
-	<script type="text/javascript" src="node_modules/redux/dist/redux.js"></script>
+    <script type="text/javascript" src="node_modules/redux/dist/redux.js"></script>
+	<script type="text/javascript" src="node_modules/moment/min/moment-with-locales.js"></script>
 	<script type="text/javascript" src="src/js/main.js"></script>
+
+    <style type="text/css">
+        .debug-wrapper{
+            float:right;
+        }
+        .debug-text{
+            width: 350px;
+            height: 700px;
+        }
+
+        .component-wrapper,.component-container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .component-container .inner{
+            padding-left: 30px
+        }
+
+        .component-wrapper+.component-wrapper{
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
+
+
+<div class="debug-wrapper">
+    <button class="debug-update">Update</button>
+    <textarea class="debug-text"></textarea>
+</div>
 
 </body>
 </html>

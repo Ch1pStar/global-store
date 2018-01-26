@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.20.1",
     "redux": "^3.7.2"
   }
 }
