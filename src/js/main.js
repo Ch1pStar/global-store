@@ -53,6 +53,7 @@ function init(tournament) {
 function update(tournament) {
 	rewards.state = tournament.rewards;
 	leaderboard.state = tournament.leaderboard;
+	timer.state = tournament.time;
 }
 
 class Component{
@@ -141,7 +142,7 @@ class Timer extends Component{
 		const minutes = parseInt((ms%HOUR)/MINUTE);
 		const seconds = parseInt(((ms%HOUR)%MINUTE)/SECOND);
 
-		return `${hours}:${minutes}:${seconds}`;
+		return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 	}
 
 	clearCnt(){
