@@ -22,10 +22,12 @@ function reducer(state, action) {
 			nextState.forEach((t) => tournament.update(t));
 			break;
 		case 'timeTick':
+			// Integrate action properties into the global state
 			nextState = timerReducer(state, action);
+
+			// update only specific time related components
+			// TODO Proper diff logic
 			nextState.forEach((t) => {
-				// update only specific time related components
-				// TODO Proper diff logic
 				tournament.timer.state = t.time
 				tournament.title.state = t;
 			});
