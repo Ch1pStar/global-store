@@ -7,8 +7,6 @@ export default class Title extends Component{
 
 		this._titleSpan = document.createElement('span');
 		this._container.appendChild(this._titleSpan);
-
-		this.render();
 	}
 
 	render() {
@@ -25,6 +23,8 @@ export default class Title extends Component{
 
 			span.textContent = state.title;
 		}
+
+		super.render();
 	}
 
 }

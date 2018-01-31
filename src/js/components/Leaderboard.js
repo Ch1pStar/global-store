@@ -28,6 +28,8 @@ export default class Leaderboard extends Component{
 
 			cnt.appendChild(inner);
 		});
+
+		super.render();
 	}
 
 	clearCnt(){

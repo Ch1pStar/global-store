@@ -19,6 +19,8 @@ export default class Rewards extends Component{
 			span.innerText = `${reward.from}-${reward.to} => ${reward.symbol}${parseFloat(reward.amount, 10).toFixed(2)}`;
 			cnt.appendChild(span);
 		});
+
+		super.render();
 	}
 
 	clearCnt(){

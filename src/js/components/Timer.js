@@ -18,7 +18,6 @@ export default class Timer extends Component{
 		inner.className = 'component-container inner';
 		inner.appendChild(startSpan);
 		inner.appendChild(endSpan);
-		this.render();
 	}
 
 	render() {
@@ -45,6 +44,7 @@ export default class Timer extends Component{
 			this._startSpan.textContent = `Starts in: ${this._formatRemaining(tillStart)}`;
 		}
 
+		super.render();
 	}
 
 
@@ -52,7 +52,6 @@ export default class Timer extends Component{
 		this._hot = val.isHot;
 		this._total = val.timeLeft;
 		this._duration = val.duration;
-		this.render();
 	}
 
 	_formatRemaining(ms) {

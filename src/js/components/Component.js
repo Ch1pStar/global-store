@@ -4,6 +4,7 @@ export default class Component{
 
 	constructor(state) {
 		this._state = state;
+		this.dirty = true;
 
 		const cnt = this._container = document.createElement('div');
 
@@ -11,9 +12,12 @@ export default class Component{
 		document.body.appendChild(cnt);
 	}
 
+	render() {
+		this.dirty = false;
+	}
+
 	set state(val) {
 		this._state = val;
-		this.render();
 	}
 
 	clearCnt(){
