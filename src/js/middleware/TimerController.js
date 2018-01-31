@@ -5,7 +5,7 @@ let prev = 0;
 let hotMs = 0;
 let store;
 let duration = 0;
-let PRECISION = 16; // in ms, lowest possible is 16(60 fps)
+let PRECISION = 0; // in ms, lowest possible is 16(60 fps)
 let lastUpdateAt = 0;
 
 export default function TimerController(st) {

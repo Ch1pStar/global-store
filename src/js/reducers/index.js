@@ -23,7 +23,7 @@ function reducer(state, action) {
 			break;
 		case 'timeTick':
 			// Integrate action properties into the global state
-			nextState = timerReducer(state, action);
+			nextState = timerReducer(nextState, action);
 
 			// update only specific time related components
 			// TODO Proper diff logic

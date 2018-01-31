@@ -1,7 +1,5 @@
 import timeController from './TimerController';
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose;
-// export default composeEnhancers(Redux.applyMiddleware(timeController));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose;
 
-
-export default Redux.applyMiddleware(timeController);
+export default composeEnhancers(Redux.applyMiddleware(timeController));
