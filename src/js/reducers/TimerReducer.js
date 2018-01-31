@@ -1,12 +1,15 @@
-export default function TimerReducer(state, action) {
-	let nextState = state;
-	const mutations = action.state;
+export default function TimerReducer(state, components) {
+	state.forEach((t, i) => {
+		const tournament = components[i];
 
-	nextState.forEach((t, i) => {
-		t.time.timeLeft = mutations[i].total;
-		t.time.isHot = mutations[i].timeToHot <= 0;
-		t.time.duration = mutations[i].duration;
+		tournament.timer.state = t.time
+		tournament.timer.dirty = true;
+
+		tournament.title.state = t;
+		tournament.title.dirty = true;
+
+		tournament.render();
 	});
 
-	return nextState;
+	return state;
 }

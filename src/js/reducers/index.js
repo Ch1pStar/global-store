@@ -24,22 +24,9 @@ function reducer(state, action) {
 
 			break;
 		case 'timeTick':
-			// Integrate action properties into the global state
-			nextState = timerReducer(nextState, action);
-
 			// update only specific time related components
 			// TODO map components requiring update to each action
-			nextState.forEach((t, i) => {
-				const tournament = tournaments[i];
-
-				tournament.timer.state = t.time
-				tournament.timer.dirty = true;
-
-				tournament.title.state = t;
-				tournament.title.dirty = true;
-
-				tournament.render();
-			});
+			timerReducer(nextState, tournaments);
 			break;
 	}
 
