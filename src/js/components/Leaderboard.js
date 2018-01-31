@@ -11,7 +11,7 @@ export default class Leaderboard extends Component {
     const state = this._state
 
     this.clearCnt()
-    state.groups.forEach((group) => {
+    state.leaderboard.groups.forEach((group) => {
       const inner = document.createElement('inner')
 
       inner.className = 'component-container inner'
@@ -27,6 +27,8 @@ export default class Leaderboard extends Component {
 
       cnt.appendChild(inner)
     })
+
+    this.visible = (state.status === 'active')
 
     super.render()
   }

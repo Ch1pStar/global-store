@@ -7,14 +7,14 @@ export default class EnterButton extends Component {
     this._button = document.createElement('button')
     this._container.appendChild(this._button)
 
-    this._button.addEventListener('click', enterAction);
+    this._button.addEventListener('click', enterAction)
   }
 
   render () {
     const button = this._button
     const state = this._state
 
-    this.visible = (state.status === 'pending');
+    this.visible = (state.status === 'pending')
     button.textContent = 'Enter'
 
     super.render()

@@ -1,5 +1,4 @@
 import timerReducer from './TimerReducer'
-import enterReducer from './enterReducer'
 import TournamentComponent from '../containers/Tournament'
 
 // tournament visual component
@@ -21,10 +20,7 @@ function reducer (state, action) {
       nextState.forEach((t, i) => tournaments[i].update(t))
       break
     case 'timeTick':
-      nextState = timerReducer(nextState, tournaments)
-      break
-    case 'enter':
-      nextState = enterReducer(nextState, action.id);
+      nextState = timerReducer(nextState, action.mutations, tournaments)
       break
   }
 

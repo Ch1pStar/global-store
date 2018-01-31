@@ -1,7 +1,10 @@
-const enterTournament = ({dispatch, getState}, id=-1) => () => {
-	if(id < 0) return;
+import {get} from '../util'
 
-	dispatch({type: 'enter', id});
-};
+const enterTournament = ({dispatch, getState}, id = -1) => () => {
+  if (id < 0) return
 
-export default enterTournament;
+  // TODO send real request with tournament id
+  get((state) => dispatch({type: 'update', state}), 'src/mock/active.json')
+}
+
+export default enterTournament

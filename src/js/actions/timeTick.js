@@ -1,5 +1,5 @@
-const timeTick = ({dispatch, getState}) => (state) => {
-	dispatch({type: 'timeTick', state});
-};
+const timeTick = ({dispatch, getState}) => (mutations) => {
+  dispatch({type: 'timeTick', mutations})
+}
 
-export default timeTick;
+export default timeTick

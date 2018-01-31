@@ -2,7 +2,7 @@ import {get, goHot} from './util'
 import middleware from './middleware/index'
 import reducer from './reducers/index'
 
-import {createUpdateFromString} from './actions/update';
+import {createUpdateFromStringAction} from './actions/update'
 
 // ----------------------INIT----------------------------
 
@@ -15,7 +15,7 @@ function loaded (data) {
 
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
-  const updateFromString = createUpdateFromString(store);
+  const updateFromString = createUpdateFromStringAction(store)
 
   debug.value = JSON.stringify({success: true, result: data})
   debug.addEventListener('paste', (e) => updateFromString(e.clipboardData.getData('Text')))

@@ -11,7 +11,7 @@ export default class Rewards extends Component {
     const state = this._state
 
     this.clearCnt()
-    state.forEach((reward) => {
+    state.rewards.forEach((reward) => {
       const span = document.createElement('span')
 
       span.className = 'inner'
