@@ -12,5 +12,8 @@
     "format-util": "^1.0.3",
     "moment": "^2.20.1",
     "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
   }
 }

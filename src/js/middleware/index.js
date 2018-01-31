@@ -1,5 +1,5 @@
-import stateController from './StateController';
+import stateController from './StateController'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || window.Redux.compose
 
-export default composeEnhancers(Redux.applyMiddleware(stateController));
+export default composeEnhancers(window.Redux.applyMiddleware(stateController))

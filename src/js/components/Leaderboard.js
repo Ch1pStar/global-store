@@ -1,38 +1,37 @@
-import Component from './Component';
+import Component from './Component'
 
-export default class Leaderboard extends Component{
+export default class Leaderboard extends Component {
+  constructor (state) {
+    super(state)
+    this.state = state
+  }
 
-	constructor(state) {
-		super(state);
-		this.state = state;
-	}
+  render () {
+    const cnt = this._container
+    const state = this._state
 
-	render() {
-		const cnt = this._container;
-		const state = this._state;
+    this.clearCnt()
+    state.groups.forEach((group) => {
+      const inner = document.createElement('inner')
 
-		this.clearCnt();
-		state.groups.forEach((group) => {
-			const inner = document.createElement('inner');
+      inner.className = 'component-container inner'
+      inner.innerText = '--------------------'
+      group.forEach((part) => {
+        const span = document.createElement('span')
+        const text = `${part.place}. ${part.displayName} ${part.points}`
 
-			inner.className = 'component-container inner';
-			inner.innerText = '--------------------';
-			group.forEach((part) => {
-				const span = document.createElement('span');
-				const text = `${part.place}. ${part.displayName} ${part.points}`;
+        span.innerText = text
 
-				span.innerText = text;
+        inner.appendChild(span)
+      })
 
-				inner.appendChild(span);
-			});
+      cnt.appendChild(inner)
+    })
 
-			cnt.appendChild(inner);
-		});
+    super.render()
+  }
 
-		super.render();
-	}
-
-	clearCnt(){
-		this._container.innerText = '-----------Leaderboard-----------';
-	}
+  clearCnt () {
+    this._container.innerText = '-----------Leaderboard-----------'
+  }
 }
