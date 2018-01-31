@@ -4,7 +4,7 @@
       {
          "title":"Initial tournament title",
          "type":"points",
-         "status":"pending",
+         "status":"active",
          "id":123,
          "games":[
             "DragonsLuck",
@@ -18,9 +18,9 @@
          "stakeMax":"1000.00",
          "enrollFee":"10.00",
          "time":{
-            "currentTime":"2018-01-10 10:00:00",
+            "currentTime":"2018-01-10 10:22:00",
             "startTime":"2018-01-10 10:19:23",
-            "hotTime":"2018-01-10 10:19:30",
+            "hotTime":"2018-01-10 10:22:05",
             "endTime":"2018-01-10 11:00:00",
             "offerEndTime":"2018-03-10 10:30:00"
          },
@@ -29,7 +29,7 @@
                "from":1,
                "to":3,
                "places":3,
-               "amount":"1120.00",
+               "amount":"20.00",
                "currency":"USD",
                "symbol":"$"
             },
@@ -37,31 +37,7 @@
                "from":4,
                "to":8,
                "places":4,
-               "amount":"200.00",
-               "currency":"USD",
-               "symbol":"$"
-            },
-            {
-               "from":9,
-               "to":20,
-               "places":11,
-               "amount":"20.00",
-               "currency":"USD",
-               "symbol":"$"
-            },
-            {
-               "from":21,
-               "to":30,
-               "places":9,
                "amount":"10.00",
-               "currency":"USD",
-               "symbol":"$"
-            },
-            {
-               "from":31,
-               "to":40,
-               "places":9,
-               "amount":"5.00",
                "currency":"USD",
                "symbol":"$"
             }

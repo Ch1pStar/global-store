@@ -1,29 +1,27 @@
-import {Title, Rewards, Timer, Leaderboard} from './index'
+import {Title, Rewards, Timer, Leaderboard} from '../components/index'
+import Button from '../components/EnterButton';
+import createEnterAction from '../actions/enter';
 
 export default class Tournament {
-  constructor (state) {
+  constructor (state, store = window.store) {
     this.visible = true
 
     this.title = new Title(state)
     this.rewards = new Rewards(state.rewards)
     this.timer = new Timer(state.time)
     this.leaderboard = new Leaderboard(state.leaderboard)
+    this.button = new Button(state, createEnterAction(store, state.id));
+    this.id = state.id;
 
     this.render()
   }
 
   update (state) {
     this.title.state = state
-    this.title.dirty = true
-
     this.rewards.state = state.rewards
-    this.rewards.dirty = true
-
     this.leaderboard.state = state.leaderboard
-    this.leaderboard.dirty = true
-
     this.timer.state = state.time
-    this.timer.dirty = true
+    this.button.state = state;
 
     this.render()
   }
@@ -33,5 +31,6 @@ export default class Tournament {
     if (this.rewards.dirty) this.rewards.render()
     if (this.timer.dirty) this.timer.render()
     if (this.leaderboard.dirty) this.leaderboard.render()
+    if (this.button.dirty) this.button.render()
   }
 }

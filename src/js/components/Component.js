@@ -18,9 +18,18 @@ export default class Component {
 
   set state (val) {
     this._state = val
+    this.dirty = true;
   }
 
   clearCnt () {
     this._container.innerText = '--------------------------------'
+  }
+
+  set visible(val) {
+    this._container.style.display = val ? 'flex' : 'none';
+  }
+
+  get visible() {
+    return this._container.style.display === 'flex';
   }
 }

@@ -2,6 +2,8 @@ import {get, goHot} from './util'
 import middleware from './middleware/index'
 import reducer from './reducers/index'
 
+import {createUpdateFromString} from './actions/update';
+
 // ----------------------INIT----------------------------
 
 var store = window.Redux.createStore(reducer, middleware)
@@ -13,6 +15,7 @@ function loaded (data) {
 
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
+  const updateFromString = createUpdateFromString(store);
 
   debug.value = JSON.stringify({success: true, result: data})
   debug.addEventListener('paste', (e) => updateFromString(e.clipboardData.getData('Text')))
@@ -21,8 +24,4 @@ function loaded (data) {
 
   window.store = store
   store.dispatch({type: 'init', state: tournaments})
-}
-
-function updateFromString (state) {
-  store.dispatch({type: 'update', state: JSON.parse(state).result})
 }

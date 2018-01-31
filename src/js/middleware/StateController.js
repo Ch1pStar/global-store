@@ -1,9 +1,12 @@
+import createDispatchTick from '../actions/timeTick'
+
 const ALLOWED_ACTIONS = ['update', 'init']
 
 let prev = 0
-let store
-let PRECISION = 0 // in ms, lowest possible is 16(60 fps)
+let PRECISION = 10 // in ms, lowest possible is 16(60 fps)
 let lastUpdateAt = 0
+let tickAction
+let getState
 
 const moment = window.moment
 
@@ -16,20 +19,14 @@ function updateTime (t) {
   const diff = current - prev
   const shouldUpdate = (current - lastUpdateAt) > PRECISION
   const mutations = {timePassed: diff}
-  const nextState = mutateState(store.getState(), mutations)
+  const nextState = mutateState(getState(), mutations)
 
   if (shouldUpdate && nextState.length) {
     lastUpdateAt = current
-    dispatchTick(nextState)
+    tickAction(nextState)
   }
 
   prev = current
-}
-
-function dispatchTick (state) {
-  if (!store) return
-
-  store.dispatch({type: 'timeTick', state})
 }
 
 function stateController (action, next) {
@@ -65,8 +62,9 @@ function mutateState (currState, {timePassed}) {
   return state
 }
 
-export default function (storeInst) {
-  store = storeInst
+export default function (store) {
+  tickAction = createDispatchTick(store);
+  getState = store.getState;
 
   return (next) => (action) => stateController(action, next)
 }

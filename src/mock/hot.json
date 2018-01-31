@@ -5,6 +5,7 @@
          "title":"Initial tournament title",
          "type":"points",
          "status":"pending",
+         "id":123,
          "games":[
             "DragonsLuck",
             "WildSpartans"

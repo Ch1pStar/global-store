@@ -50,6 +50,7 @@ export default class Timer extends Component {
     this._hot = val.isHot
     this._total = val.timeLeft
     this._duration = val.duration
+    this.dirty = true
   }
 
   _formatRemaining (ms) {
