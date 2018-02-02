@@ -6,7 +6,8 @@ import {createUpdateFromStringAction} from './actions/update'
 
 // ----------------------INIT----------------------------
 
-var store = window.Redux.createStore(reducer, middleware)
+const store = window.Redux.createStore(reducer, middleware)
+
 window.goHot = goHot
 document.addEventListener('DOMContentLoaded', () => get(loaded))
 
@@ -23,5 +24,5 @@ function loaded (data) {
   btn.addEventListener('click', () => updateFromString(debug.value))
 
   window.store = store
-  store.dispatch({type: 'init', state: tournaments})
+  store.dispatch({type: 'init', state: tournaments, store})
 }

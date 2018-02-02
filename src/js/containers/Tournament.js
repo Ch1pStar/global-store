@@ -3,8 +3,9 @@ import Button from '../components/EnterButton'
 import createEnterAction from '../actions/enter'
 
 export default class Tournament {
+
   // TODO Pass store to tournament container, react-redux connect magic
-  constructor (state, store = window.store) {
+  constructor (state) {
     this.visible = true
 
     this.title = new Title(state)

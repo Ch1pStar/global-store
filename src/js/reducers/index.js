@@ -1,5 +1,5 @@
 import timerReducer from './TimerReducer'
-import TournamentComponent from '../containers/Tournament'
+import TournamentContainer from '../containers/Tournament'
 
 // tournament visual component
 // TODO Create state manager class to replace this array
@@ -13,7 +13,7 @@ function reducer (state, action) {
   switch (action.type) {
     case 'init':
       nextState = action.state
-      nextState.forEach((t) => tournaments.push(new TournamentComponent(t)))
+      nextState.forEach((t) => tournaments.push(new TournamentContainer(t, action.store)))
       break
     case 'update':
       nextState = action.state
