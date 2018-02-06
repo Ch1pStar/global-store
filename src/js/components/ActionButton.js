@@ -17,9 +17,12 @@ export default class ActionButton extends Component {
     const button = this._button
     const text = this._firstTimeText;
     const state = this._state
+    const isDisabled = Boolean(state.enterRequested);
+
+    button.disabled = isDisabled;
 
     this.visible = (state.status === 'pending')
-    button.textContent = 'Enter'
+    button.textContent = isDisabled ? 'Waiting' : 'Enter'
 
     text.style.display = state.viewed ? 'none' : 'inline';
     text.textContent = 'New Tournament Available!';

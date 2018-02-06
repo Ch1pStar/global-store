@@ -19,6 +19,9 @@ function reducer (state, action) {
       nextState = action.state
       nextState.forEach((t, i) => tournaments[i].update(t))
       break
+    case 'enterRequested':
+      nextState.forEach((t, i) => (t.id === action.id) && ((t.enterRequested = true) && tournaments[i].update(t)));
+      break;
     case 'timeTick':
       nextState = timerReducer(nextState, action.mutations, tournaments)
       break
