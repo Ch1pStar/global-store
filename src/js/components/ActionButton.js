@@ -1,7 +1,7 @@
 import Component from './Component'
 
-export default class EnterButton extends Component {
-  constructor (state, appContainer, enterAction) {
+export default class ActionButton extends Component {
+  constructor (state, appContainer, action) {
     super(state, appContainer)
 
     this._firstTimeText = document.createElement('span');
@@ -10,7 +10,7 @@ export default class EnterButton extends Component {
     this._button = document.createElement('button')
     this._container.appendChild(this._button)
 
-    this._button.addEventListener('click', enterAction)
+    this._button.addEventListener('click', action)
   }
 
   render () {

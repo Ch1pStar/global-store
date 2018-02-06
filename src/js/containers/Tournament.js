@@ -1,11 +1,11 @@
 import {Title, Rewards, Timer, Leaderboard} from '../components/index'
-import Button from '../components/EnterButton'
+import Button from '../components/ActionButton'
 import createEnterAction from '../actions/enter'
 
 export default class Tournament {
 
   // TODO Pass store to tournament container, react-redux connect magic
-  constructor (state) {
+  constructor (state, store) {
     this.visible = true
     this.appContainer = document.querySelector('.app-wrapper');
 
