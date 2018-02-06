@@ -34,31 +34,6 @@ function stateController (action, next) {
   return next(action)
 }
 
-// function mutateState (currState, {timePassed}) {
-//   const state = currState
-
-//   for (let i = 0, len = state.length; i < len; i++) {
-//     const tournament = state[i]
-//     const time = tournament.time
-//     const now = moment(time.currentTime)
-//     const start = moment(time.startTime)
-//     const end = moment(time.endTime)
-//     const endMs = end.valueOf()
-
-//     const duration = endMs - start.valueOf()
-//     const hotMs = end - moment(time.hotTime)
-//     const total = tournament.time.timeLeft ? (tournament.time.timeLeft - timePassed) : (endMs - now.valueOf() - timePassed)
-//     const timeToHot = total - hotMs
-
-//     tournament.time.duration = duration
-//     tournament.time.timeLeft = total
-//     tournament.time.timeHot = timeToHot
-//     tournament.time.isHot = timeToHot <= 0
-//   }
-
-//   return state
-// }
-
 export default function (store) {
   tickAction = createDispatchTick(store)
 
