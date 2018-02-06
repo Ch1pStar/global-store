@@ -16,6 +16,18 @@
             height: 500px;
         }
 
+        .debug-buttons-wrapper {
+            display: flex;
+        }
+
+        .app-wrapper {
+            max-width: 250px;
+            background-color: #004D94;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: white;
+        }
+
         .component-wrapper,.component-container{
             display: flex;
             flex-direction: column;
@@ -38,10 +50,14 @@
 
 
 <div class="debug-wrapper">
-    <button class="debug-update">Update</button>
-    <button class="debug-hot" onclick="javascript: goHot();">Hot</button>
+    <div class="deubg-buttons-wrapper">
+        <button class="debug-update">Update</button>
+        <button class="debug-clear-cache">Clear local cache</button>
+        <button class="debug-hot" onclick="javascript: goHot();">Hot</button>
+    </div>
     <textarea class="debug-text"></textarea>
 </div>
+<div class="app-wrapper"></div>
 
 </body>
 </html>

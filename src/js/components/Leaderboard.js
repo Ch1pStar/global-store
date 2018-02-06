@@ -1,8 +1,8 @@
 import Component from './Component'
 
 export default class Leaderboard extends Component {
-  constructor (state) {
-    super(state)
+  constructor (state, appContainer) {
+    super(state, appContainer)
     this.state = state
   }
 

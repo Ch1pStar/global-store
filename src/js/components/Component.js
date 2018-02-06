@@ -2,14 +2,14 @@ export default class Component {
   // state = null;
   // _container = null;
 
-  constructor (state) {
+  constructor (state, appContainer) {
     this._state = state
     this.dirty = true
 
     const cnt = this._container = document.createElement('div')
 
     cnt.className = 'component-container component-wrapper'
-    document.body.appendChild(cnt)
+    appContainer.appendChild(cnt)
   }
 
   render () {

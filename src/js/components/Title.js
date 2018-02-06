@@ -1,8 +1,8 @@
 import Component from './Component'
 
 export default class Title extends Component {
-  constructor (state) {
-    super(state)
+  constructor (state, appContainer) {
+    super(state, appContainer)
 
     this._titleSpan = document.createElement('span')
     this._container.appendChild(this._titleSpan)

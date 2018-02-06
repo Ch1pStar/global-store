@@ -5,3 +5,7 @@ export function goHot () {
     window.store.dispatch({type: 'update', state})
   }, 'src/mock/hot.json')
 }
+
+export function clearLocalState() {
+	localStorage.setItem('viewed-tournaments', '[]');
+}

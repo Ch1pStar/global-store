@@ -7,13 +7,15 @@ export default class Tournament {
   // TODO Pass store to tournament container, react-redux connect magic
   constructor (state) {
     this.visible = true
+    this.appContainer = document.querySelector('.app-wrapper');
 
-    this.title = new Title(state)
-    this.rewards = new Rewards(state)
-    this.timer = new Timer(state.time)
-    this.leaderboard = new Leaderboard(state)
-    this.button = new Button(state, createEnterAction(store, state.id))
+    this.title = new Title(state, this.appContainer)
+    this.rewards = new Rewards(state, this.appContainer)
+    this.timer = new Timer(state.time, this.appContainer)
+    this.leaderboard = new Leaderboard(state, this.appContainer)
+    this.button = new Button(state, this.appContainer, createEnterAction(store, state.id))
     this.id = state.id
+
 
     this.render()
   }

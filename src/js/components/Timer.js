@@ -5,8 +5,8 @@ const MINUTE = 60000
 const SECOND = 1000
 
 export default class Timer extends Component {
-  constructor (state) {
-    super(state)
+  constructor (state, appContainer) {
+    super(state, appContainer)
     const inner = this._inner = document.createElement('div')
     const startSpan = this._startSpan = document.createElement('span')
     const endSpan = this._endSpan = document.createElement('span')
