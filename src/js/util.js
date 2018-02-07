@@ -6,6 +6,6 @@ export function goHot () {
   }, 'src/mock/hot.json')
 }
 
-export function clearLocalState() {
-	localStorage.setItem('viewed-tournaments', '[]');
+export function clearLocalState () {
+  window.localStorage.setItem('viewed-tournaments', '[]')
 }

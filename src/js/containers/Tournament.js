@@ -3,11 +3,10 @@ import Button from '../components/ActionButton'
 import createEnterAction from '../actions/enter'
 
 export default class Tournament {
-
   // TODO Pass store to tournament container, react-redux connect magic
   constructor (state, store) {
     this.visible = true
-    this.appContainer = document.querySelector('.app-wrapper');
+    this.appContainer = document.querySelector('.app-wrapper')
 
     this.title = new Title(state, this.appContainer)
     this.rewards = new Rewards(state, this.appContainer)
@@ -31,7 +30,7 @@ export default class Tournament {
     this.render()
   }
 
-  timeUpdate(state) {
+  timeUpdate (state) {
     this.timer.state = state.time
     this.title.state = state
     this.countdown.state = state

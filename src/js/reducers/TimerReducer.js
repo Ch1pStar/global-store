@@ -13,17 +13,17 @@ export default function TimerReducer (state, {timePassed}, components) {
     const total = tournament.time.timeLeft ? (tournament.time.timeLeft - timePassed) : (endMs - now.valueOf() - timePassed)
     const timeToHot = total - hotMs
     const visualComponent = components[i]
-    const timeToStart = total - duration;
-    const showCountdown = (timeToStart > 0) && (timeToStart <= 5000);
+    const timeToStart = total - duration
+    const showCountdown = (timeToStart > 0) && (timeToStart <= 5000)
 
     tournament.time.duration = duration
     tournament.time.timeLeft = total
     tournament.time.timeHot = timeToHot
     tournament.time.isHot = (timeToHot <= 0)
-    tournament.time.showCountdown = showCountdown;
-    tournament.time.timeToStart = timeToStart;
+    tournament.time.showCountdown = showCountdown
+    tournament.time.timeToStart = timeToStart
 
-    visualComponent.timeUpdate(tournament);
+    visualComponent.timeUpdate(tournament)
   })
 
   return state
