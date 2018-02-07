@@ -23,7 +23,7 @@ export default class Timer extends Component {
     if (!this._inner) return
 
     const hot = this._hot
-    const tillStart = this._total - this._duration
+    const tillStart = this._timeToStart;
 
     if (hot) {
       if (!this._endSpan.classList.contains('hot')) this._endSpan.classList.add('hot')
@@ -50,7 +50,11 @@ export default class Timer extends Component {
     this._hot = val.isHot
     this._total = val.timeLeft
     this._duration = val.duration
-    this.dirty = true
+    this._showCountdown = val.showCountdown
+    this._timeToStart = val.timeToStart
+
+    this.dirty = true;
+    this._container.style.display = this._showCountdown && Boolean(this._timeToStart) ? 'none' : 'flex';
   }
 
   _formatRemaining (ms) {
