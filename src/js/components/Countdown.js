@@ -15,7 +15,7 @@ export default class Countdown extends Component {
     // this component needs to be rendered only if it should be shown
     this.dirty = state.time.showCountdown && Boolean(state.time.timeToStart)
 
-    this._titleSpan.style.display = this.dirty ? 'inline' : 'none'
+    this._container.style.display = this.dirty ? 'flex' : 'none'
   }
 
   render () {

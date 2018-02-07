@@ -26,7 +26,7 @@ function updateTime (t) {
   prev = current
 }
 
-function stateController (action, next) {
+function timerController (action, next) {
   if (ALLOWED_ACTIONS.indexOf(action.type) < 0) return next(action)
 
   if (action.type === 'init') updateTime()
@@ -37,5 +37,5 @@ function stateController (action, next) {
 export default function (store) {
   tickAction = createDispatchTick(store)
 
-  return (next) => (action) => stateController(action, next)
+  return (next) => (action) => timerController(action, next)
 }

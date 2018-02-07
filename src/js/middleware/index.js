@@ -1,6 +1,6 @@
-import stateController from './StateController'
+import timerController from './TimerController'
 import localState from './LocalState'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || window.Redux.compose
 
-export default composeEnhancers(window.Redux.applyMiddleware(localState, stateController))
+export default composeEnhancers(window.Redux.applyMiddleware(localState, timerController))
