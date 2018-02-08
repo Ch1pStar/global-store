@@ -1,6 +1,21 @@
+Bridge:
+	load panel source
+	load tournaments source
+	new Panel
+	addAssets(tournament assets)
+	preload
+
+	-------------------------------------
+	on server data - panel.setState(data)
+
 Panel:
 	-> start app -> queue assets -> queue content -> start preload -> content is added and initialized when loading is done(done internally)
 	-> request settings -> wait for app content to load and init -> pass settings(initial state) to app content
+	-> receive new state
+		this.tournaments.setState(data.tournaments)
+		this.jackpots.setState(data.jackpots)
+		...etc
+	-> on content event(jackpot win) - if(activeTab.status != 'busy') panel.switchTo(jackpot)
 
 Tournament:
 	-> receive initial state -> start global timer -> create visual components -> render
