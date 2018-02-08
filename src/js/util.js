@@ -9,3 +9,7 @@ export function goHot () {
 export function clearLocalState () {
   window.localStorage.setItem('viewed-tournaments', '[]')
 }
+
+export function currentTime() {
+	return window.performance.now() << 0
+}

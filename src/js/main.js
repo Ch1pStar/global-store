@@ -3,17 +3,18 @@ import middleware from './middleware/index'
 import reducer from './reducers/index'
 
 import {createUpdateFromStringAction} from './actions/update'
-
-// ----------------------INIT----------------------------
-
-const store = window.Redux.createStore(reducer, middleware)
-
-window.goHot = goHot
-document.addEventListener('DOMContentLoaded', () => get(loaded))
+import createView from './view';
 
 function loaded (data) {
-  const tournaments = data
+  const store = window.Redux.createStore(reducer, data, middleware)
 
+  initDebug(data, store);
+  createView(data, store);
+
+  store.dispatch({type: 'init'});
+}
+
+function initDebug(data, store) {
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
   const updateFromString = createUpdateFromStringAction(store)
@@ -24,7 +25,6 @@ function loaded (data) {
 
   btn.addEventListener('click', () => updateFromString(debug.value))
   clearCacheBtn.addEventListener('click', clearLocalState)
-
-  window.store = store
-  store.dispatch({type: 'init', state: tournaments, store})
 }
+
+document.addEventListener('DOMContentLoaded', () => get(loaded))

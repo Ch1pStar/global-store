@@ -1,29 +1,20 @@
 import timerReducer from './TimerReducer'
-import TournamentContainer from '../containers/Tournament'
 
-// tournament visual component
-// TODO Create state manager class to replace this array
-const tournaments = []
-
-function reducer (state, action) {
-  if (!state) return action.state || []
-
-  let nextState = state
+function reducer (state = [], action) {
+  // state = Immutable(state);
+  // let nextState = Immutable.asMutable(state, {deep: true});
+  let nextState = JSON.parse(JSON.stringify(state));
 
   switch (action.type) {
-    case 'init':
-      nextState = action.state
-      nextState.forEach((t) => tournaments.push(new TournamentContainer(t, action.store)))
-      break
     case 'update':
+      // nextState = Immutable.asMutable(action.state, {deep: true})
       nextState = action.state
-      nextState.forEach((t, i) => tournaments[i].update(t))
       break
     case 'enterRequested':
-      nextState.forEach((t, i) => (t.id === action.id) && ((t.enterRequested = true) && tournaments[i].update(t)))
+      nextState.forEach((t, i) => (t.id === action.id) && (t.enterRequested = true))
       break
     case 'timeTick':
-      nextState = timerReducer(nextState, action.mutations, tournaments)
+      nextState = timerReducer(nextState, action.mutations)
       break
   }
 

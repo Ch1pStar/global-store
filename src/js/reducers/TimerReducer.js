@@ -1,6 +1,6 @@
 const moment = window.moment
 
-export default function TimerReducer (state, {timePassed}, components) {
+export default function TimerReducer (state, {timePassed}) {
   state.forEach((tournament, i) => {
     const time = tournament.time
     const now = moment(time.currentTime)
@@ -12,7 +12,6 @@ export default function TimerReducer (state, {timePassed}, components) {
     const hotMs = end - moment(time.hotTime)
     const total = tournament.time.timeLeft ? (tournament.time.timeLeft - timePassed) : (endMs - now.valueOf() - timePassed)
     const timeToHot = total - hotMs
-    const visualComponent = components[i]
     const timeToStart = total - duration
     const showCountdown = (timeToStart > 0) && (timeToStart <= 5000)
 
@@ -22,8 +21,6 @@ export default function TimerReducer (state, {timePassed}, components) {
     tournament.time.isHot = (timeToHot <= 0)
     tournament.time.showCountdown = showCountdown
     tournament.time.timeToStart = timeToStart
-
-    visualComponent.timeUpdate(tournament)
   })
 
   return state

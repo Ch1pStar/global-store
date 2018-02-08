@@ -1,9 +1,10 @@
 import createDispatchTick from '../actions/timeTick'
+import {TIME_PRECISION} from '../const';
+import {currentTime} from '../util';
 
-const ALLOWED_ACTIONS = ['update', 'init']
+const ALLOWED_ACTIONS = ['init']
 
 let prev = 0
-let PRECISION = 10 // in ms, lowest possible is 16(60 fps)
 let lastUpdateAt = 0
 let tickAction
 
@@ -12,12 +13,12 @@ let tickAction
 function updateTime (t) {
   window.requestAnimationFrame(updateTime)
 
-  const current = window.performance.now() << 0
-  const diff = current - prev
-  const shouldUpdate = (current - lastUpdateAt) > PRECISION
+  const current = currentTime();
+  const timePassed = current - lastUpdateAt
+  const shouldUpdate = timePassed >= TIME_PRECISION
 
   if (shouldUpdate) {
-    const mutations = {timePassed: diff}
+    const mutations = {timePassed}
 
     lastUpdateAt = current
     tickAction(mutations)
@@ -29,7 +30,7 @@ function updateTime (t) {
 function timerController (action, next) {
   if (ALLOWED_ACTIONS.indexOf(action.type) < 0) return next(action)
 
-  if (action.type === 'init') updateTime()
+  updateTime()
 
   return next(action)
 }
