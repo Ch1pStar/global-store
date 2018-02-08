@@ -1,16 +1,18 @@
 import TournamentContainer from './containers/Tournament'
 
-let store;
-const tournaments = [];
-const onStateUpdate = () => {
-    const state = store.getState();
+export default class View {
+  constructor(data, store) {
+    this.store = store;
+    this.tournaments = [];
 
-    state.forEach((t, i) => tournaments[i].update(t))
-}
+    data.forEach((t) => this.tournaments.push(new TournamentContainer(t, store.dispatch)))
 
-export default function createView(data, st) {
-  store = st;
-  data.forEach((t) => tournaments.push(new TournamentContainer(t, store.dispatch)))
+    store.subscribe(this.onStateUpdate.bind(this));
+  }
 
-  store.subscribe(onStateUpdate);
+  onStateUpdate() {
+    const state = this.store.getState();
+
+    state.forEach((t, i) => this.tournaments[i].update(t))
+  }
 }

@@ -16,7 +16,6 @@ export function currentTime() {
 	return window.performance.now() << 0
 }
 
-
 export function initDebug(data, store) {
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
