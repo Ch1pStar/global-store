@@ -8,7 +8,7 @@ function reducer (state = [], action) {
   switch (action.type) {
     case 'update':
       // nextState = Immutable.asMutable(action.state, {deep: true})
-      nextState = action.state
+      nextState = JSON.parse(JSON.stringify(action.state));
       break
     case 'enterRequested':
       nextState.forEach((t, i) => (t.id === action.id) && (t.enterRequested = true))

@@ -8,9 +8,12 @@ let prev = 0
 let lastUpdateAt = 0
 let tickAction
 
+let paused = false;
+
 // global time ticker, started on boot up and never stops
 // updates each tournament state
 function updateTime (t) {
+  if(paused) return;
   window.requestAnimationFrame(updateTime)
 
   const current = currentTime();
@@ -26,6 +29,9 @@ function updateTime (t) {
 
   prev = current
 }
+
+export const stopTime = () => paused = true;
+export const startTime = () => {paused = false; updateTime();}
 
 function timerController (action, next) {
   if (ALLOWED_ACTIONS.indexOf(action.type) < 0) return next(action)
