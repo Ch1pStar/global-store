@@ -22,7 +22,7 @@ export default class Timer extends Component {
   render () {
     if (!this._inner) return
 
-    const state = this._state;
+    const state = this._state
     const hot = state.isHot
     const tillStart = state.timeToStart
     const total = state.timeLeft
@@ -49,7 +49,7 @@ export default class Timer extends Component {
   }
 
   set state (val) {
-    this._state = val;
+    this._state = val
 
     this.dirty = true
     this._container.style.display = val.showCountdown && Boolean(val.timeToStart) ? 'none' : 'flex'

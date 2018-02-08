@@ -1,23 +1,22 @@
 import createDispatchTick from '../actions/timeTick'
-import {TIME_PRECISION} from '../const';
-import {currentTime} from '../util';
-import {INIT} from '../actions/index';
+import {TIME_PRECISION} from '../const'
+import {currentTime} from '../util'
+import {INIT} from '../actions/index'
 
 const ALLOWED_ACTIONS = [INIT]
 
-let prev = 0
 let lastUpdateAt = 0
 let tickAction
 
-let paused = false;
+let paused = false
 
 // global time ticker, started on boot up and never stops
 // updates each tournament state
 function updateTime (t) {
-  if(paused) return;
+  if (paused) return
   window.requestAnimationFrame(updateTime)
 
-  const current = currentTime();
+  const current = currentTime()
   const timePassed = current - lastUpdateAt
   const shouldUpdate = timePassed >= TIME_PRECISION
 
@@ -27,12 +26,10 @@ function updateTime (t) {
     lastUpdateAt = current
     tickAction(mutations)
   }
-
-  prev = current
 }
 
-export const stopTime = () => paused = true;
-export const startTime = () => {paused = false; updateTime();}
+export const stopTime = () => paused = true // eslint-disable-line no-return-assign
+export const startTime = () => { paused = false; updateTime() }
 
 function timerController (action, next) {
   if (ALLOWED_ACTIONS.indexOf(action.type) < 0) return next(action)

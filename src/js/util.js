@@ -13,11 +13,11 @@ export function clearLocalState () {
   window.localStorage.setItem('viewed-tournaments', '[]')
 }
 
-export function currentTime() {
-	return window.performance.now() << 0
+export function currentTime () {
+  return window.performance.now() << 0
 }
 
-export function initDebug(data, store) {
+export function initDebug (data, store) {
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
   const updateFromString = createUpdateFromStringAction(store)
@@ -29,12 +29,12 @@ export function initDebug(data, store) {
   btn.addEventListener('click', () => updateFromString(debug.value))
   clearCacheBtn.addEventListener('click', clearLocalState)
 
-  document.querySelector('.debug-start').addEventListener('click', startTime);
-  document.querySelector('.debug-stop').addEventListener('click', stopTime);
+  document.querySelector('.debug-start').addEventListener('click', startTime)
+  document.querySelector('.debug-stop').addEventListener('click', stopTime)
 }
 
-export function queryParam(val) {
-	const exp = new RegExp(`[?&]${val}(=([^&#]*)|&|#|$)`);
+export function queryParam (val) {
+  const exp = new RegExp(`[?&]${val}(=([^&#]*)|&|#|$)`)
 
-	return exp.exec(window.location.search)[2];
+  return exp.exec(window.location.search)[2]
 }
