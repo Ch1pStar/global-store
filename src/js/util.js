@@ -28,3 +28,9 @@ export function initDebug(data, store) {
   btn.addEventListener('click', () => updateFromString(debug.value))
   clearCacheBtn.addEventListener('click', clearLocalState)
 }
+
+export function queryParam(val) {
+	const exp = new RegExp(`[?&]${val}(=([^&#]*)|&|#|$)`);
+
+	return exp.exec(window.location.search)[2];
+}
