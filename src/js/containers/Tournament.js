@@ -3,8 +3,7 @@ import Button from '../components/ActionButton'
 import createEnterAction from '../actions/enter'
 
 export default class Tournament {
-  // TODO Pass store to tournament container, react-redux connect magic
-  constructor (state, store) {
+  constructor (state, dispatch) {
     this.visible = true
     this.appContainer = document.querySelector('.app-wrapper')
 
@@ -13,7 +12,7 @@ export default class Tournament {
     this.timer = new Timer(state.time, this.appContainer)
     this.countdown = new Countdown(state, this.appContainer)
     this.leaderboard = new Leaderboard(state, this.appContainer)
-    this.button = new Button(state, this.appContainer, createEnterAction(store, state.id))
+    this.button = new Button(state, this.appContainer, createEnterAction(dispatch, state.id))
     this.id = state.id
 
     this.render()

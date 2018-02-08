@@ -1,6 +1,6 @@
 import {get} from '../util'
 
-const enterTournament = ({dispatch, getState}, id = -1) => () => {
+const enterTournament = (dispatch, id = -1) => () => {
   if (id < 0) return
 
   console.log('requesting next state...')
