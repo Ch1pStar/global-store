@@ -22,8 +22,10 @@ export default class Timer extends Component {
   render () {
     if (!this._inner) return
 
-    const hot = this._hot
-    const tillStart = this._timeToStart
+    const state = this._state;
+    const hot = state.isHot
+    const tillStart = state.timeToStart
+    const total = state.timeLeft
 
     if (hot) {
       if (!this._endSpan.classList.contains('hot')) this._endSpan.classList.add('hot')
@@ -35,7 +37,7 @@ export default class Timer extends Component {
       this._endSpan.style.display = 'inline'
       this._startSpan.style.display = 'none'
 
-      this._endSpan.textContent = `Ends in: ${this._formatRemaining(this._total)}`
+      this._endSpan.textContent = `Ends in: ${this._formatRemaining(total)}`
     } else {
       this._endSpan.style.display = 'none'
       this._startSpan.style.display = 'inline'
@@ -47,14 +49,10 @@ export default class Timer extends Component {
   }
 
   set state (val) {
-    this._hot = val.isHot
-    this._total = val.timeLeft
-    this._duration = val.duration
-    this._showCountdown = val.showCountdown
-    this._timeToStart = val.timeToStart
+    this._state = val;
 
     this.dirty = true
-    this._container.style.display = this._showCountdown && Boolean(this._timeToStart) ? 'none' : 'flex'
+    this._container.style.display = val.showCountdown && Boolean(val.timeToStart) ? 'none' : 'flex'
   }
 
   _formatRemaining (ms) {
