@@ -1,5 +1,5 @@
 import {createUpdateFromStringAction} from './actions/update'
-import {startTime, stopTime} from './middleware/TimerController'
+// import {startTime, stopTime} from './middleware/TimerController'
 
 export function get (callback, url = 'src/mock/settings.json') { window.fetch(url).then((res) => res.json()).then((data) => callback(data.result)) }
 
@@ -17,7 +17,7 @@ export function currentTime () {
   return window.performance.now() << 0
 }
 
-export function initDebug (data, store) {
+export function initDebug (data, store, {timer}) {
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
   const updateFromString = createUpdateFromStringAction(store)
@@ -29,8 +29,8 @@ export function initDebug (data, store) {
   btn.addEventListener('click', () => updateFromString(debug.value))
   clearCacheBtn.addEventListener('click', clearLocalState)
 
-  document.querySelector('.debug-start').addEventListener('click', startTime)
-  document.querySelector('.debug-stop').addEventListener('click', stopTime)
+  document.querySelector('.debug-start').addEventListener('click', timer.startTime.bind(timer))
+  document.querySelector('.debug-stop').addEventListener('click', timer.stopTime.bind(timer))
 }
 
 export function queryParam (val) {
