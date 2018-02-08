@@ -1,8 +1,9 @@
 import createDispatchTick from '../actions/timeTick'
 import {TIME_PRECISION} from '../const';
 import {currentTime} from '../util';
+import {INIT} from '../actions/index';
 
-const ALLOWED_ACTIONS = ['init']
+const ALLOWED_ACTIONS = [INIT]
 
 let prev = 0
 let lastUpdateAt = 0

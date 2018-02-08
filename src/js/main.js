@@ -1,7 +1,8 @@
 import {get, initDebug} from './util'
 import middleware from './middleware/index'
 import reducer from './reducers/index'
-import View from './view';
+import View from './View';
+import {INIT} from './actions/index';
 
 function loaded (data) {
   const store = window.Redux.createStore(reducer, data, middleware)
@@ -9,7 +10,7 @@ function loaded (data) {
 
   initDebug(data, store);
 
-  store.dispatch({type: 'init'});
+  store.dispatch({type: INIT});
 }
 
 document.addEventListener('DOMContentLoaded', () => get(loaded))

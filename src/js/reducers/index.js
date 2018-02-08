@@ -1,4 +1,9 @@
 import timerReducer from './TimerReducer'
+import {
+  INIT, UPDATE,
+  REQUEST_ENTER, TIME_TICK
+} from '../actions/index'
+
 
 function reducer (state = [], action) {
   // state = Immutable(state);
@@ -6,14 +11,14 @@ function reducer (state = [], action) {
   let nextState = JSON.parse(JSON.stringify(state));
 
   switch (action.type) {
-    case 'update':
+    case UPDATE:
       // nextState = Immutable.asMutable(action.state, {deep: true})
       nextState = JSON.parse(JSON.stringify(action.state));
       break
-    case 'enterRequested':
+    case REQUEST_ENTER:
       nextState.forEach((t, i) => (t.id === action.id) && (t.enterRequested = true))
       break
-    case 'timeTick':
+    case TIME_TICK:
       nextState = timerReducer(nextState, action.mutations)
       break
   }
