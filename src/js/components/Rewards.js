@@ -15,7 +15,7 @@ export default class Rewards extends Component {
       const span = document.createElement('span')
 
       span.className = 'inner'
-      span.innerText = `${String(reward.from).padStart(2, '0')}-${String(reward.to).padStart(2, '0')} => ${reward.symbol}${parseFloat(reward.amount, 10).toFixed(2).padStart(7, '0')}`
+      span.textContent = `${String(reward.from).padStart(2, '0')}-${String(reward.to).padStart(2, '0')} => ${reward.symbol}${parseFloat(reward.amount, 10).toFixed(2).padStart(7, '0')}`
       cnt.appendChild(span)
     })
 
@@ -23,6 +23,6 @@ export default class Rewards extends Component {
   }
 
   clearCnt () {
-    this._container.innerText = '-----------Payouts-----------'
+    this._container.textContent = '-----------Payouts-----------'
   }
 }

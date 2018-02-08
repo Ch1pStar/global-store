@@ -15,12 +15,12 @@ export default class Leaderboard extends Component {
       const inner = document.createElement('inner')
 
       inner.className = 'component-container inner'
-      inner.innerText = '--------------------'
+      inner.textContent = '--------------------'
       group.forEach((part) => {
         const span = document.createElement('span')
         const text = `${part.place}. ${part.displayName} ${part.points}`
 
-        span.innerText = text
+        span.textContent = text
 
         inner.appendChild(span)
       })
@@ -34,6 +34,6 @@ export default class Leaderboard extends Component {
   }
 
   clearCnt () {
-    this._container.innerText = '-----------Leaderboard-----------'
+    this._container.textContent = '-----------Leaderboard-----------'
   }
 }
