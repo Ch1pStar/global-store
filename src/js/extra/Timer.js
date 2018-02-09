@@ -4,16 +4,15 @@ import {currentTime} from './util'
 
 // global time ticker, started on boot up and never stops
 export default class Timer {
+  constructor (store) {
+    this.lastUpdateAt = 0
+    this.paused = false
 
-  constructor(store) {
-    this.lastUpdateAt = 0;
-    this.paused = false;
+    this.tickAction = createDispatchTick(store)
 
-    this.tickAction = createDispatchTick(store);
+    this.updateTimeBound = this.updateTime.bind(this)
 
-    this.updateTimeBound = this.updateTime.bind(this);
-
-    this.updateTimeBound();
+    this.updateTimeBound()
   }
 
   updateTime () {
@@ -32,12 +31,12 @@ export default class Timer {
     }
   }
 
-  stopTime() {
-    this.paused = true;
+  stopTime () {
+    this.paused = true
   }
 
-  startTime() {
-    this.paused = false;
-    this.updateTimeBound();
+  startTime () {
+    this.paused = false
+    this.updateTimeBound()
   }
 }

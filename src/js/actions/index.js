@@ -5,6 +5,6 @@ export const UPDATE = 'update'
 export const REQUEST_ENTER = 'enterRequested'
 export const TIME_TICK = 'timeTick'
 
-export const thunkActions =  {
+export const thunkActions = {
   [REQUEST_ENTER]: enterTournament
-};
+}

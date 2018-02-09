@@ -1,8 +1,8 @@
 import {get} from '../extra/util'
-import {UPDATE, REQUEST_ENTER} from './index';
+import {UPDATE} from './index'
 
-export default function enterTournament(action, dispatch, getState) {
-  const id = action.payload;
+export default function enterTournament (action, dispatch, getState) {
+  const id = action.payload
 
   if (id < 0) return
 
@@ -11,5 +11,4 @@ export default function enterTournament(action, dispatch, getState) {
 
     dispatch(UPDATE, state)
   }, 'src/mock/active.json')
-
 }

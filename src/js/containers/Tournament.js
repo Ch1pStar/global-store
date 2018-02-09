@@ -13,8 +13,8 @@ export default class Tournament {
     this.countdown = new Countdown(state, this.appContainer)
     this.leaderboard = new Leaderboard(state, this.appContainer)
 
-    this._enterController = new EnterController(store);
-    this.button = new Button(state, this.appContainer, () => this._enterController.requestEnter(state.id));
+    this._enterController = new EnterController(store)
+    this.button = new Button(state, this.appContainer, () => this._enterController.requestEnter(state.id))
     this.id = state.id
 
     this.render()

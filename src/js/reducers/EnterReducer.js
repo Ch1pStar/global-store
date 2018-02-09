@@ -1,12 +1,11 @@
-export default function EnterReducer(state = [], action) {
-  const newState = [];
+export default function EnterReducer (state = [], action) {
+  const newState = []
 
   state.forEach((t, i) => {
-    if(t.id === action.payload) 
-      t = t.set('enterRequested', true);
+    if (t.id === action.payload) { t = t.set('enterRequested', true) }
 
-      newState[i] = t;
-  });
+    newState[i] = t
+  })
 
-  return newState;
+  return newState
 }

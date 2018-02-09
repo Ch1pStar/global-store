@@ -1,11 +1,12 @@
+const Immutable = window.Immutable
 const moment = window.moment
 
 export default function TimerReducer (state, action) {
-  const {timePassed} = action.payload;
-  const newState = [];
+  const {timePassed} = action.payload
+  const newState = []
 
-  for(let i=0,len=state.length;i<len;i++){
-    const tournament = Immutable.asMutable(state[i], {deep: true});
+  for (let i = 0, len = state.length; i < len; i++) {
+    const tournament = Immutable.asMutable(state[i], {deep: true})
     const time = tournament.time
     const now = moment(time.currentTime)
     const start = moment(time.startTime)
@@ -26,7 +27,7 @@ export default function TimerReducer (state, action) {
     time.showCountdown = showCountdown
     time.timeToStart = timeToStart
 
-    newState[i] = tournament;
+    newState[i] = tournament
   }
 
   return newState

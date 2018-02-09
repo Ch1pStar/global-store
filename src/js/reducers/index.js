@@ -6,10 +6,10 @@ import {
 } from '../actions/index'
 
 const reducers = {
-  [INIT]: {'*' : (state = [], action) => state},
+  [INIT]: {'*': (state = [], action) => state},
   [UPDATE]: {'*': (state = [], action) => action.payload},
   [REQUEST_ENTER]: {'*': enterReducer},
-  [TIME_TICK]: {'*': timerReducer},
-};
+  [TIME_TICK]: {'*': timerReducer}
+}
 
-export default reducers;
+export default reducers

@@ -44,70 +44,71 @@ export function initDebug (data, store, {timer}) {
 }
 
 export function queryParam (val) {
-  if(!window.location.search) return;
+  if (!window.location.search) return
 
   const exp = new RegExp(`[?&]${val}(=([^&#]*)|&|#|$)`)
 
   return exp.exec(window.location.search)[2]
 }
 
-
-function createThunkAction(type, fn) {
+/* eslint-disable */
+function createThunkAction (type, fn) {
   return (action, dispatch, getState) => {
-    fn(action.payload, dispatch, getState);
-  };
+    fn(action.payload, dispatch, getState)
+  }
 }
 
-function createAsyncAction(type, fn) {
+function createAsyncAction (type, fn) {
   return createThunkAction(type, (payload, dispatch, getState) => {
-    dispatch({type: type + '_START', payload: payload});
+    dispatch({type: type + '_START', payload: payload})
     fn(payload, (error, result) => {
-      if (typeof error === 'undefined') error = null;
-      if (typeof result === 'undefined') result = null;
-      return dispatch({type: type + '_END', payload: {error, result}, payloadStart: payload});
-    }, dispatch, getState);
+      if (typeof error === 'undefined') error = null
+      if (typeof result === 'undefined') result = null
+      return dispatch({type: type + '_END', payload: {error, result}, payloadStart: payload})
+    }, dispatch, getState)
   })
 }
 
-function createServerAction(type, options) {
-  let {url, request, response, validate, callback} = (options || {});
+function createServerAction (type, options) {
+  let {url, request, response, validate, callback} = (options || {})
   return createAsyncAction(type, (data, cb, dispatch) => {
-    let requestData = data;
-    let urlRequest = (typeof url === 'function') ? url(data) : url;
-    if (request) data = request(data);
+    let requestData = data
+    let urlRequest = (typeof url === 'function') ? url(data) : url
+    if (request) data = request(data)
     if (validate) {
-      let error = validate(data);
+      let error = validate(data)
       if (error) {
-        if (typeof callback === 'function') callback(error, null, null, requestData, dispatch);
-        return cb(error);
+        if (typeof callback === 'function') callback(error, null, null, requestData, dispatch)
+        return cb(error)
       }
     }
     Server.request(urlRequest, data, (error, result) => {
-      if (response) result = response(result);
+      if (response) result = response(result)
       if (error) {
-        if (typeof callback === 'function') callback(error, result);
-        return cb(error, result, requestData, dispatch);
+        if (typeof callback === 'function') callback(error, result)
+        return cb(error, result, requestData, dispatch)
       }
-      let data = {result, entities: {}};
+      let data = {result, entities: {}}
       if (result && normalizeConfig) {
-        data = normalize(result, normalizeConfig);
-        dispatch('REPOSITORY_LOAD_DATA', {data});
+        data = normalize(result, normalizeConfig)
+        dispatch('REPOSITORY_LOAD_DATA', {data})
       }
-      if (typeof callback === 'function') callback(error, data.result, data.entities, requestData, dispatch);
-      cb(error, data.result);
-    });
-  });
+      if (typeof callback === 'function') callback(error, data.result, data.entities, requestData, dispatch)
+      cb(error, data.result)
+    })
+  })
 }
 
-function createAction(type, config) {
+function createAction (type, config) {
   if (config.type === 'async') {
-    if (!config.fn) console.error('Action defined as async without a fn.', config);
-    return createAsyncAction(type, config.fn || ((payload, callback) => callback()));
+    if (!config.fn) console.error('Action defined as async without a fn.', config)
+    return createAsyncAction(type, config.fn || ((payload, callback) => callback()))
   } else if (config.type === 'server') {
-    if (!config.url) console.error('Action defined as server without a url.', config);
-    return createServerAction(type, config);
+    if (!config.url) console.error('Action defined as server without a url.', config)
+    return createServerAction(type, config)
   } else {
-    if (!config.fn) console.error('Action defined as thunk without a fn.', config);
-    return createThunkAction(type, config.fn);
+    if (!config.fn) console.error('Action defined as thunk without a fn.', config)
+    return createThunkAction(type, config.fn)
   }
 }
+/* eslint-enable */

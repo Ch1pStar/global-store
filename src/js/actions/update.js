@@ -1,7 +1,9 @@
+import {UPDATE} from './index'
+
 export const createUpdateFromStringAction = ({dispatch, getState}) => (state) => {
-  dispatch('update', JSON.parse(state).result)
+  dispatch(UPDATE, JSON.parse(state).result)
 }
 
 export const createUpdateAction = ({dispatch, getState}) => (state) => {
-  dispatch(update, state)
+  dispatch(UPDATE, state)
 }

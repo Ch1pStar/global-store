@@ -4,7 +4,7 @@ export default class View {
   constructor (data, store) {
     this.store = store
     this.tournaments = []
-    this.onStateUpdate = this.onStateUpdate.bind(this);
+    this.onStateUpdate = this.onStateUpdate.bind(this)
 
     data.forEach((t) => this.tournaments.push(new TournamentContainer(t, store)))
 
