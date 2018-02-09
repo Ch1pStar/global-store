@@ -1,4 +1,4 @@
-import {createUpdateFromStringAction} from './actions/update'
+import {createUpdateFromStringAction} from '../actions/update'
 // import {startTime, stopTime} from './middleware/TimerController'
 
 export function get (callback, url = 'src/mock/settings.json') { window.fetch(url).then((res) => res.json()).then((data) => callback(data.result)) }
@@ -31,7 +31,18 @@ export function initDebug (data, store, {timer}) {
 
   document.querySelector('.debug-start').addEventListener('click', timer.startTime.bind(timer))
   document.querySelector('.debug-stop').addEventListener('click', timer.stopTime.bind(timer))
+
+  // TODO
+  // this._store.addMiddleware(require('redux-immutable-state-invariant')());
+  // this._store.addMiddleware(require('redux-logger')({collapsed: true, duration: true}));
+  // let matches = window.location.href.match(/[?&]_debug=([^&]+)\b/);
+  // let session = (matches && matches.length) ? matches[1] : null;
+  // let devTools = null;
+  // if (window['devToolsExtension']) devTools = window['devToolsExtension']();
+  // if (devTools) this._store.addEnhancer(devTools);
+  // if (session) this._store.addEnhancer(require('redux-devtools').persistState(session));
 }
+
 
 export function queryParam (val) {
   const exp = new RegExp(`[?&]${val}(=([^&#]*)|&|#|$)`)

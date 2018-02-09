@@ -1,16 +1,19 @@
 'use strict';
 
-const Redux = require('redux');
-const EventEmitter = require('eventemitter3');
-const Immutable = require('seamless-immutable');
+// import Redux from 'redux'
+// import Immutable from 'seamless-immutable'
+// import EventEmitter from 'eventemitter3'
 
+const EventEmitter = window.EventEmitter3
+const Redux = window.Redux;
+const Immutable = window.Immutable;
 
 /**
  * Redux store wrapper
  *
  * @extends EventEmitter
  */
-class Store extends EventEmitter {
+export default class Store extends EventEmitter {
   /**
    * @param {Object} [state]
    * @param {Array.<function>} [middlewares]
@@ -129,7 +132,7 @@ class Store extends EventEmitter {
    */
   addReducer(action, path, reducer) {
     if (arguments.length === 2) {
-      reducer = arguments[2];
+      reducer = arguments[1];
       path = '';
     }
 
@@ -283,14 +286,6 @@ class Store extends EventEmitter {
     return this._store.getState();
   }
 }
-
-
-
-
-
-module.exports = Store;
-
-
 
 
 

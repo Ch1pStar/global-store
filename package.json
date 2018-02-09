@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eventemitter3": "^3.0.1",
     "format-util": "^1.0.3",
     "moment": "^2.20.1",
     "redux": "^3.7.2",

@@ -1,5 +1,5 @@
 const timeTick = ({dispatch, getState}) => (mutations) => {
-  dispatch({type: 'timeTick', mutations})
+  dispatch('timeTick', mutations)
 }
 
 export default timeTick

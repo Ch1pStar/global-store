@@ -1,20 +1,21 @@
-import {get, initDebug} from './util'
+import {get, initDebug} from './extra/util'
 import middleware from './middleware/index'
-import reducer from './reducers/index'
+import reducers from './reducers/index'
 import View from './View'
 import {INIT} from './actions/index'
 import Timer from './extra/Timer';
+import Store from './Store';
 
 function loaded (data) {
-  const store = window.Redux.createStore(reducer, data, middleware) // create store
+  const store = new Store(data);
+
+  store.addReducers(reducers);
+  store.init();
+
   const view = new View(data, store) // create view
   const timer = new Timer(store);
 
-
   initDebug(data, store, {timer})
-
-  // start the app
-  store.dispatch({type: INIT})
 }
 
 document.addEventListener('DOMContentLoaded', () => get(loaded))

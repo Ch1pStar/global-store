@@ -1,7 +1,11 @@
 const moment = window.moment
 
-export default function TimerReducer (state, {timePassed}) {
-  state.forEach((tournament, i) => {
+export default function TimerReducer (state, action) {
+  const {timePassed} = action.payload;
+  const newState = [];
+
+  for(let i=0,len=state.length;i<len;i++){
+    const tournament = Immutable.asMutable(state[i], {deep: true});
     const time = tournament.time
     const now = moment(time.currentTime)
     const start = moment(time.startTime)
@@ -15,13 +19,15 @@ export default function TimerReducer (state, {timePassed}) {
     const timeToStart = total - duration
     const showCountdown = (timeToStart > 0) && (timeToStart <= 5000)
 
-    tournament.time.duration = duration
-    tournament.time.timeLeft = total
-    tournament.time.timeHot = timeToHot
-    tournament.time.isHot = (timeToHot <= 0)
-    tournament.time.showCountdown = showCountdown
-    tournament.time.timeToStart = timeToStart
-  })
+    time.duration = duration
+    time.timeLeft = total
+    time.timeHot = timeToHot
+    time.isHot = (timeToHot <= 0)
+    time.showCountdown = showCountdown
+    time.timeToStart = timeToStart
 
-  return state
+    newState[i] = tournament;
+  }
+
+  return newState
 }

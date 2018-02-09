@@ -1,7 +1,7 @@
-export const createUpdateFromStringAction = (store) => (state) => {
-  store.dispatch({type: 'update', state: JSON.parse(state).result})
+export const createUpdateFromStringAction = ({dispatch, getState}) => (state) => {
+  dispatch('update', JSON.parse(state).result)
 }
 
-export const createUpdateAction = (store) => (state) => {
-  store.dispatch({type: 'update', state})
+export const createUpdateAction = ({dispatch, getState}) => (state) => {
+  dispatch(update, state)
 }

@@ -1,6 +1,6 @@
 import createDispatchTick from '../actions/timeTick'
-import {TIME_PRECISION} from '../const'
-import {currentTime} from '../util'
+import {TIME_PRECISION} from './const'
+import {currentTime} from './util'
 
 // global time ticker, started on boot up and never stops
 export default class Timer {
