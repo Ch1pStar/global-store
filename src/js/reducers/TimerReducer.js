@@ -1,5 +1,5 @@
-const Immutable = window.Immutable
-const moment = window.moment
+import moment from 'moment'
+import Immutable from 'seamless-immutable'
 
 export default function TimerReducer (state, action) {
   const {timePassed} = action.payload

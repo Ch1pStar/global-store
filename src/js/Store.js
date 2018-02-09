@@ -1,12 +1,8 @@
 'use strict'
 
-// import Redux from 'redux'
-// import Immutable from 'seamless-immutable'
-// import EventEmitter from 'eventemitter3'
-
-const EventEmitter = window.EventEmitter3
-const Redux = window.Redux
-const Immutable = window.Immutable
+import * as Redux from 'redux'
+import Immutable from 'seamless-immutable'
+import EventEmitter from 'eventemitter3'
 
 /**
  * Redux store wrapper

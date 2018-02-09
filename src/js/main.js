@@ -20,8 +20,6 @@ class App {
     store.addReducers(reducers)
     store.addThunkActions(thunkActions)
     store.init()
-
-    window.store = this.store
   }
 }
 

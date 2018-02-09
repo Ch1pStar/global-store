@@ -1,5 +1,4 @@
 import {createUpdateFromStringAction} from '../actions/update'
-// import {startTime, stopTime} from './middleware/TimerController'
 
 export function get (callback, url = 'src/mock/settings.json') { window.fetch(url).then((res) => res.json()).then((data) => callback(data.result)) }
 
