@@ -1,9 +1,9 @@
 import {Title, Countdown, Rewards, Timer, Leaderboard} from '../components/index'
 import Button from '../components/ActionButton'
-import createEnterAction from '../actions/enter'
+import EnterController from '../controllers/EnterController'
 
 export default class Tournament {
-  constructor (state, dispatch) {
+  constructor (state, store) {
     this.visible = true
     this.appContainer = document.querySelector('.app-wrapper')
 
@@ -12,7 +12,9 @@ export default class Tournament {
     this.timer = new Timer(state.time, this.appContainer)
     this.countdown = new Countdown(state, this.appContainer)
     this.leaderboard = new Leaderboard(state, this.appContainer)
-    this.button = new Button(state, this.appContainer, createEnterAction(dispatch, state.id))
+
+    this._enterController = new EnterController(store);
+    this.button = new Button(state, this.appContainer, () => this._enterController.requestEnter(state.id));
     this.id = state.id
 
     this.render()

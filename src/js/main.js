@@ -1,21 +1,28 @@
 import {get, initDebug} from './extra/util'
-import middleware from './middleware/index'
 import reducers from './reducers/index'
+import {thunkActions} from './actions/index'
 import View from './View'
-import {INIT} from './actions/index'
 import Timer from './extra/Timer';
 import Store from './Store';
 
-function loaded (data) {
-  const store = new Store(data);
+class App {
+	constructor(data) {
+	  this._initStore(data);
+	  this.view = new View(data, this.store) // create view
+	  this.timer = new Timer(this.store);
 
-  store.addReducers(reducers);
-  store.init();
+	  initDebug(data, this.store, {timer: this.timer})
+	}
 
-  const view = new View(data, store) // create view
-  const timer = new Timer(store);
+	_initStore(data) {
+	  const store = this.store = new Store(data);
 
-  initDebug(data, store, {timer})
+	  store.addReducers(reducers);
+	  store.addThunkActions(thunkActions);
+	  store.init();
+
+	  window.store = this.store;
+	}
 }
 
-document.addEventListener('DOMContentLoaded', () => get(loaded))
+document.addEventListener('DOMContentLoaded', () => get((data) => new App(data)))

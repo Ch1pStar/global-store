@@ -1,9 +1,7 @@
-'use strict';
-
 /**
  * Abstract controller
  */
-class Controller {
+export default class Controller {
   /**
    * @param {Store} [store]
    */
@@ -32,7 +30,7 @@ class Controller {
    */
   dispatch(type, data = {}) {
     if (!this._store) throw new Error('Store not set.');
-    this._store.dispatch(Object.assign({type}, data));
+    this._store.dispatch(type, data);
   }
 
   /**
@@ -51,6 +49,3 @@ class Controller {
     return this._store.getState();
   }
 }
-
-
-module.exports = Controller;
