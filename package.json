@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "standard": "^10.0.3",
-    "standard-version": "^4.3.0"
+    "standard-version": "^4.3.0",
+    "dope-builder": "git@gitlab.dopamine.bg:frontend/libs/dope-builder.git#dev"
   }
 }
