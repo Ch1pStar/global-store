@@ -1,15 +1,16 @@
 'use strict'
 
-import * as Redux from 'redux'
-import Immutable from 'seamless-immutable'
-import EventEmitter from 'eventemitter3'
+// uncomment when using a bundle build
+// import * as Redux from 'redux'
+// import Immutable from 'seamless-immutable'
+// import EventEmitter3 from 'eventemitter3'
 
 /**
  * Redux store wrapper
  *
  * @extends EventEmitter
  */
-export default class Store extends EventEmitter {
+export default class Store extends EventEmitter3 {
   /**
    * @param {Object} [state]
    * @param {Array.<function>} [middlewares]
