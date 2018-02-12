@@ -15,6 +15,7 @@ export default class Tournament {
 
     this._enterController = new EnterController(store)
     this.button = new Button(state, this.appContainer, () => this._enterController.requestEnter(state.id))
+    // this.button = new Button(state, this.appContainer, () => store.dispatch('enter'))
     this.id = state.id
 
     this.render()
@@ -27,14 +28,6 @@ export default class Tournament {
     this.leaderboard.state = state
     this.timer.state = state.time
     this.button.state = state
-
-    this.render()
-  }
-
-  timeUpdate (state) {
-    this.timer.state = state.time
-    this.title.state = state
-    this.countdown.state = state
 
     this.render()
   }

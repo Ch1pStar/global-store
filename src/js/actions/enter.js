@@ -6,13 +6,9 @@ export default function enterTournament (action, dispatch, getState) {
 
   if (id < 0) return
 
-  // TODO fix builder browserify babel preset to support async/await
-  // get(async (state) => {
-  //   await new Promise((resolve) => setTimeout(resolve, 2000))
-  get((state) => {
-    setTimeout(() => {
-    	dispatch(UPDATE, state)
-    }, 2000);
+  get(async (state) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
 
+    dispatch(UPDATE, state)
   }, 'src/mock/active.json')
 }
