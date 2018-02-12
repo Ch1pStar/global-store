@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/Ch1pStar/global-store/compare/v0.1.0...v0.2.0) (2018-02-12)
+
+
+### Bug Fixes
+
+* dope-builder config and add babel-runtime ([13ce47d](https://github.com/Ch1pStar/global-store/commit/13ce47d))
+* Temporary remove async/await usage until builder supports it ([b59b22d](https://github.com/Ch1pStar/global-store/commit/b59b22d))
+
+
+### Features
+
+* Add dope-builder ([4ff6262](https://github.com/Ch1pStar/global-store/commit/4ff6262))
+* Implement  app packing with dope-builder ([ead1473](https://github.com/Ch1pStar/global-store/commit/ead1473))
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2018-02-09)
 
