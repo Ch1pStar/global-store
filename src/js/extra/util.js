@@ -19,7 +19,8 @@ export function currentTime () {
   return window.performance.now() << 0
 }
 
-export function initDebug (data, store, {timer}) {
+export function initDebug ({store, timer, container}) {
+  const data = store.getState();
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
   const updateFromString = createUpdateFromStringAction(store)
@@ -33,6 +34,10 @@ export function initDebug (data, store, {timer}) {
 
   document.querySelector('.debug-start').addEventListener('click', timer.startTime.bind(timer))
   document.querySelector('.debug-stop').addEventListener('click', timer.stopTime.bind(timer))
+
+  if(container) {
+    createPIXIRenderer(container);
+  }
 
   // TODO
   // this._store.addMiddleware(require('redux-immutable-state-invariant')());

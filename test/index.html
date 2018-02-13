@@ -16,7 +16,12 @@
     <script type="text/javascript" src="../dist/app.min.js"></script>
 
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get(com.casino.tournaments.init))
+        // document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get(com.casino.tournaments.init))
+        document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get((data) => {
+            const app = com.casino.tournaments.init(data);
+
+            com.casino.tournaments.initDebug(app);
+        }))
     </script>
 
     <style type="text/css">
