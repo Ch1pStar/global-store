@@ -6,7 +6,7 @@ export default class Title extends PIXI.Container {
     super();
     this._state = state
 
-    const text = new PIXI.Text(state.title, {fill: 0xffffff, fontSize: 20});
+    const text = new PIXI.Text(state.title, {fill: 0xffffff, fontSize: 18});
 
     this.addChild(text);
     this._text = text;

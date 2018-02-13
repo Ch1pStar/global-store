@@ -2,10 +2,10 @@ const { presets, tasks, builder } = require('dope-builder')
 
 const vendors = {
   "externalModules": [
-    'moment',
-    'redux',
-    'seamless-immutable',
-    'eventemitter3',
+    // 'moment',
+    // 'redux',
+    // 'seamless-immutable',
+    // 'eventemitter3',
     'pixi.js',
     'pixi-animate',
   ]

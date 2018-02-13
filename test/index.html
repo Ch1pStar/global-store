@@ -20,7 +20,9 @@
         document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get((data) => {
             const app = com.casino.tournaments.init(data);
 
+            app.view.init();
             com.casino.tournaments.initDebug(app);
+            window.app = app;
         }))
     </script>
 
