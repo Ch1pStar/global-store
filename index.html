@@ -3,10 +3,13 @@
 <head>
     <title>The future</title>
 
+    <meta charset="utf-8">
+
     <script type="text/javascript" src="bin/redux.js"></script>
     <script type="text/javascript" src="bin/eventemitter3.min.js"></script>
     <script type="text/javascript" src="bin/moment-with-locales.js"></script>
     <script type="text/javascript" src="bin/immutable.dev.min.js"></script>
+    <script type="text/javascript" src="bin/pixi.js"></script>
     <script type="module" src="src/js/main.js"></script>
 
 <!-- 
@@ -14,10 +17,16 @@
     <script type="text/javascript" src="dist/app.min.js"></script> -->
 
     <style type="text/css">
-        .debug-wrapper{
-            float:right;
-            width: 400px;
+        body{
+            display: flex;
+            flex-direction: row-reverse;
         }
+
+        .debug-wrapper{
+            width: 400px;
+            height: 530px
+        }
+
         .debug-text{
             width: 100%;
             height: 500px;
@@ -29,6 +38,8 @@
         }
 
         .app-wrapper {
+            min-width: 240px;
+            margin-right: 25px;
             max-width: 250px;
             background-color: #004D94;
             border-radius: 5px;
@@ -67,6 +78,7 @@
     <textarea class="debug-text"></textarea>
 </div>
 <div class="app-wrapper"></div>
+<div class="pixi-app-wrapper app-wrapper"></div>
 
 </body>
 </html>

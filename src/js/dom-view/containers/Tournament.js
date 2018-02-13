@@ -1,6 +1,6 @@
 import {Title, Countdown, Rewards, Timer, Leaderboard} from '../components/index'
 import Button from '../components/ActionButton'
-import EnterController from '../controllers/EnterController'
+import EnterController from '../../controllers/EnterController'
 
 export default class Tournament {
   constructor (state, store) {

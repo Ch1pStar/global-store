@@ -50,6 +50,20 @@ export function queryParam (val) {
   return exp.exec(window.location.search)[2]
 }
 
+export function createPIXIRenderer(stage) {
+  const r = new PIXI.WebGLRenderer(240, 530, {backgroundColor: 0x004D94});
+
+  document.querySelector('.pixi-app-wrapper').appendChild(r.view);
+
+  const render = (t) => {
+    requestAnimationFrame(render);
+
+    r.render(stage);
+  };
+
+  requestAnimationFrame(render);
+}
+
 /* eslint-disable */
 function createThunkAction (type, fn) {
   return (action, dispatch, getState) => {
