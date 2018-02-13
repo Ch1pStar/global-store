@@ -1,3 +1,5 @@
+import * as PIXI from 'pixi.js'
+
 const HOUR = 3600000
 const MINUTE = 60000
 const SECOND = 1000

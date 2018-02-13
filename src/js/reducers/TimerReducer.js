@@ -1,6 +1,6 @@
 // uncomment when using a bundle build
-// import moment from 'moment'
-// import Immutable from 'seamless-immutable'
+import moment from 'moment'
+import Immutable from 'seamless-immutable'
 
 export default function TimerReducer (state, action) {
   const {timePassed} = action.payload

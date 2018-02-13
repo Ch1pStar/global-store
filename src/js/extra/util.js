@@ -1,6 +1,9 @@
 import {createUpdateFromStringAction} from '../actions/update'
+import * as PIXI from 'pixi.js'
 
-export function get (callback, url = 'src/mock/settings.json') { window.fetch(url).then((res) => res.json()).then((data) => callback(data.result)) }
+export const BASE = '../';
+
+export function get (callback, url = 'src/mock/settings.json') { window.fetch(BASE+url).then((res) => res.json()).then((data) => callback(data.result)) }
 
 export function goHot () {
   get((state) => {

@@ -4,22 +4,24 @@
     <title>The future</title>
 
     <meta charset="utf-8">
-
+<!-- 
     <script type="text/javascript" src="bin/redux.js"></script>
     <script type="text/javascript" src="bin/eventemitter3.min.js"></script>
     <script type="text/javascript" src="bin/moment-with-locales.js"></script>
     <script type="text/javascript" src="bin/immutable.dev.min.js"></script>
     <script type="text/javascript" src="bin/pixi.js"></script>
-    <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="src/js/main.js"></script> -->
 
-<!-- 
-    <script type="text/javascript" src="dist/app.vendors.min.js"></script>
-    <script type="text/javascript" src="dist/app.min.js"></script> -->
+    <script type="text/javascript" src="../dist/app.vendors.min.js"></script>
+    <script type="text/javascript" src="../dist/app.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get(com.casino.tournaments.init))
+    </script>
 
     <style type="text/css">
         body{
             display: flex;
-            flex-direction: row-reverse;
         }
 
         .debug-wrapper{
@@ -67,7 +69,7 @@
 </head>
 <body>
 
-
+<div class="pixi-app-wrapper app-wrapper"></div>
 <div class="debug-wrapper">
     <div class="deubg-buttons-wrapper">
         <button class="debug-update">Update</button>
@@ -77,8 +79,6 @@
     </div>
     <textarea class="debug-text"></textarea>
 </div>
-<div class="app-wrapper"></div>
-<div class="pixi-app-wrapper app-wrapper"></div>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import Title from '../components/Title';
 import Rewards from '../components/Rewards';
 import Timer from '../components/Timer';
 
+import * as PIXI from 'pixi.js'
 
 const Container = PIXI.Container;
 

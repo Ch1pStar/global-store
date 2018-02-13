@@ -1,3 +1,5 @@
+import * as PIXI from 'pixi.js'
+
 export default class Rewards extends PIXI.Container {
 
   constructor (state) {

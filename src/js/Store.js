@@ -1,9 +1,9 @@
 'use strict'
 
 // uncomment when using a bundle build
-// import * as Redux from 'redux'
-// import Immutable from 'seamless-immutable'
-// import EventEmitter3 from 'eventemitter3'
+import * as Redux from 'redux'
+import Immutable from 'seamless-immutable'
+import EventEmitter3 from 'eventemitter3'
 
 /**
  * Redux store wrapper
