@@ -17,11 +17,15 @@
 
     <script type="text/javascript">
         // document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get(com.casino.tournaments.init))
-        document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get((data) => {
-            const app = com.casino.tournaments.init(data);
+        document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get(async (data) => {
+            const ns = com.casino.tournaments;
+
+            await ns.loadAssets();
+ 
+            const app = ns.init(data);
 
             app.view.init();
-            com.casino.tournaments.initDebug(app);
+            ns.initDebug(app);
             window.app = app;
         }))
     </script>

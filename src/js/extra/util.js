@@ -1,5 +1,6 @@
 import {createUpdateFromStringAction} from '../actions/update'
 import * as PIXI from 'pixi.js'
+import assets from '../config/assets';
 
 export const BASE = '../';
 
@@ -39,6 +40,7 @@ export function initDebug ({store, timer, container}) {
     createPIXIRenderer(container);
   }
 
+
   // TODO
   // this._store.addMiddleware(require('redux-immutable-state-invariant')());
   // this._store.addMiddleware(require('redux-logger')({collapsed: true, duration: true}));
@@ -48,6 +50,15 @@ export function initDebug ({store, timer, container}) {
   // if (window['devToolsExtension']) devTools = window['devToolsExtension']();
   // if (devTools) this._store.addEnhancer(devTools);
   // if (session) this._store.addEnhancer(require('redux-devtools').persistState(session));
+}
+
+export async function loadAssets() {
+  const loader = new PIXI.loaders.Loader();
+  const images = assets.images;
+
+  images.forEach((img) => loader.add(img.id, `../${img.src}`));
+
+  await new Promise(loader.load.bind(loader))
 }
 
 export function queryParam (val) {

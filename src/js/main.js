@@ -1,4 +1,4 @@
-import {get, initDebug} from './extra/util'
+import {get, initDebug, loadAssets} from './extra/util'
 import AppDOM from './AppDOM'
 import App from './App'
 import assets from './config/assets'
@@ -12,4 +12,5 @@ export {
   get,
   initDebug,
   assets,
+  loadAssets,
 };

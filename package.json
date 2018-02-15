@@ -18,10 +18,12 @@
     "pixi-animate": "^1.3.3",
     "pixi.js": "^4.7.0",
     "redux": "^3.7.2",
-    "seamless-immutable": "^7.1.3"
+    "seamless-immutable": "^7.1.3",
+    "pixi-components": "git+ssh://git@gitlab.dopamine.bg:games/libs/dope-games-components.git#dev"
   },
   "devDependencies": {
     "dope-builder": "git+ssh://git@gitlab.dopamine.bg:frontend/libs/dope-builder.git#dev",
+    "grunt-dope-generate-manifest": "git+ssh://git@gitlab.dopamine.bg:games/libs/grunt-dope-generate-manifest.git#dev",
     "grunt": "^1.0.1",
     "standard": "^10.0.3",
     "standard-version": "^4.3.0",
