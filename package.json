@@ -27,7 +27,6 @@
     "grunt-dope-generate-manifest": "git+ssh://git@gitlab.dopamine.bg:games/libs/grunt-dope-generate-manifest.git#dev",
     "grunt": "^1.0.1",
     "standard": "^10.0.3",
-    "standard-version": "^4.3.0",
-    "time-grunt": "^1.4.0"
+    "standard-version": "^4.3.0"
   }
 }

@@ -16,22 +16,26 @@ export default class Tournament {
     this._enterController = new EnterController(store)
     this._enterController.requestEnter(state.id)
     this.id = state.id
+    this.state = state;
 
     this.stage = new Container();
+    this._addComponents();
+  }
 
-    this.title = new Title(state);
-    this.rewards = new Rewards(state);
-    this.timer = new Timer(state.time);
+  _addComponents() {
+    this.title = new Title(this.state);
+    this.rewards = new Rewards(this.state);
+    this.timer = new Timer(this.state.time);
 
     this.rewards.y = this.title.height + 20;
     this.timer.y =  this.rewards.y + this.rewards.height + 20;
 
     this.stage.addChild(this.title, this.rewards, this.timer);
-
-    // this.render()
   }
 
   update (state) {
+    this.state = state;
+
     // this.countdown.state = state
     this.title.state = state
     this.rewards.state = state
