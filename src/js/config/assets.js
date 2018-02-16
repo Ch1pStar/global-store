@@ -40,7 +40,7 @@ export default {
             "src": "assets/images/button.png",
             "id": "button",
             "ext": ".png",
-            "size": 5979
+            "size": 15089
         },
         {
             "src": "assets/images/button-clicked.png",
@@ -53,6 +53,12 @@ export default {
             "id": "base",
             "ext": ".png",
             "size": 5806
+        },
+        {
+            "src": "assets/images/background.jpg",
+            "id": "background",
+            "ext": ".jpg",
+            "size": 2801303
         },
         {
             "src": "assets/images/70x20000.png",

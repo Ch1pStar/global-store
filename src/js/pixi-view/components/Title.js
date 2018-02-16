@@ -4,6 +4,7 @@ export default class Title extends PIXI.Container {
 
   constructor (state) {
     super();
+    this.name = 'Title Component';
     this._state = state
 
     const text = new PIXI.Text(state.title, {fill: 0xffffff, fontSize: 18});

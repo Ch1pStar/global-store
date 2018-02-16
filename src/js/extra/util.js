@@ -70,7 +70,7 @@ export function queryParam (val) {
 }
 
 export function createPIXIRenderer(stage) {
-  const r = new PIXI.WebGLRenderer(240, 530, {backgroundColor: 0x004D94});
+  const r = new PIXI.WebGLRenderer(350, 730, {backgroundColor: 0x004D94});
 
   document.querySelector('.pixi-app-wrapper').appendChild(r.view);
 

@@ -8,6 +8,7 @@ export default class Timer extends PIXI.Container {
 
   constructor (state) {
     super();
+    this.name = 'Timer Component';
     this._state = state
 
     const text = new PIXI.Text('lel', {fill: 0xffffff, fontSize: 16});

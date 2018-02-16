@@ -4,10 +4,11 @@ export default class Rewards extends PIXI.Container {
 
   constructor (state) {
     super();
+    this.name = 'Rewards Component';
     this._state = state
 
     // const text = new PIXI.Text('Rewards', {fill: 0xffffff, fontSize: 18});
-
+    // this._title = text;
     this._title = PIXI.Sprite.fromFrame('d');
     this.addChild(this._title);
 
@@ -28,9 +29,9 @@ export default class Rewards extends PIXI.Container {
     this._state = val
     this.dirty = true
 
-    // this._title.style.fill = val.time.isHot ? 0xff77aa : 0xffffff;
     const rewardsText = this.cnt.children[0];
 
+    rewardsText.style.fill = val.time.isHot ? 0xff77aa : 0xffffff;
     rewardsText.text = this._rewardsString;
   }
 
