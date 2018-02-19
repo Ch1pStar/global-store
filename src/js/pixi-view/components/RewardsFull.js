@@ -1,15 +1,15 @@
 import * as PIXI from 'pixi.js'
 
-export default class Rewards extends PIXI.Container {
+export default class RewardsFull extends PIXI.Container {
 
   constructor (state) {
     super();
-    this.name = 'Rewards Component';
+    this.name = 'RewardsFull Component';
     this._state = state
 
-    // const text = new PIXI.Text('Rewards', {fill: 0xffffff, fontSize: 18});
-    // this._title = text;
-    this._title = PIXI.Sprite.fromFrame('d');
+    const text = new PIXI.Text('Rewards', {fill: 0xffffff, fontSize: 18});
+    this._title = text;
+    // this._title = PIXI.Sprite.fromFrame('d');
     this.addChild(this._title);
 
     const cnt = this.cnt = new PIXI.Container();
@@ -39,7 +39,6 @@ export default class Rewards extends PIXI.Container {
     let cntString = '';
 
     this._state.rewards.forEach((reward, i) => {
-      if(i>=2) return;
       cntString += `${String(reward.from).padStart(2, '0')}-${String(reward.to).padStart(2, '0')} => ${reward.symbol}${parseFloat(reward.amount, 10).toFixed(2).padStart(7, '0')}\n`
     })
 
