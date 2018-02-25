@@ -3,21 +3,43 @@
 <head>
     <title>The future</title>
 
+    <meta charset="utf-8">
+<!-- 
     <script type="text/javascript" src="bin/redux.js"></script>
     <script type="text/javascript" src="bin/eventemitter3.min.js"></script>
     <script type="text/javascript" src="bin/moment-with-locales.js"></script>
     <script type="text/javascript" src="bin/immutable.dev.min.js"></script>
-    <script type="module" src="src/js/main.js"></script>
+    <script type="text/javascript" src="bin/pixi.js"></script>
+    <script type="module" src="src/js/main.js"></script> -->
 
-<!-- 
-    <script type="text/javascript" src="dist/app.vendors.min.js"></script>
-    <script type="text/javascript" src="dist/app.min.js"></script> -->
+    <script type="text/javascript" src="../dist/app.vendors.min.js"></script>
+    <script type="text/javascript" src="../dist/app.min.js"></script>
+
+    <script type="text/javascript">
+        // document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get(com.casino.tournaments.init))
+        document.addEventListener('DOMContentLoaded', () => com.casino.tournaments.get(async (data) => {
+            const ns = com.casino.tournaments;
+
+            await ns.loadAssets();
+ 
+            const app = ns.init(data);
+
+            app.view.init();
+            ns.initDebug(app);
+            window.app = app;
+        }))
+    </script>
 
     <style type="text/css">
-        .debug-wrapper{
-            float:right;
-            width: 400px;
+        body{
+            display: flex;
         }
+
+        .debug-wrapper{
+            width: 400px;
+            height: 530px
+        }
+
         .debug-text{
             width: 100%;
             height: 500px;
@@ -29,11 +51,20 @@
         }
 
         .app-wrapper {
+            min-width: 240px;
+            margin-right: 25px;
             max-width: 250px;
             background-color: #004D94;
             border-radius: 5px;
             padding: 10px 15px;
             color: white;
+        }
+
+        .app-wrapper.pixi-app-wrapper {
+            border-radius: 0px;
+            padding: 0px;
+            background-color: white;
+            max-width: 500px
         }
 
         .component-wrapper,.component-container{
@@ -56,7 +87,7 @@
 </head>
 <body>
 
-
+<div class="pixi-app-wrapper app-wrapper"></div>
 <div class="debug-wrapper">
     <div class="deubg-buttons-wrapper">
         <button class="debug-update">Update</button>
@@ -66,7 +97,6 @@
     </div>
     <textarea class="debug-text"></textarea>
 </div>
-<div class="app-wrapper"></div>
 
 </body>
 </html>

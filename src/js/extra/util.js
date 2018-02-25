@@ -1,6 +1,10 @@
 import {createUpdateFromStringAction} from '../actions/update'
+import * as PIXI from 'pixi.js'
+import assets from '../config/assets';
 
-export function get (callback, url = 'src/mock/settings.json') { window.fetch(url).then((res) => res.json()).then((data) => callback(data.result)) }
+export const BASE = '../';
+
+export function get (callback, url = 'src/mock/settings.json') { window.fetch(BASE+url).then((res) => res.json()).then((data) => callback(data.result)) }
 
 export function goHot () {
   get((state) => {
@@ -16,7 +20,8 @@ export function currentTime () {
   return window.performance.now() << 0
 }
 
-export function initDebug (data, store, {timer}) {
+export function initDebug ({store, timer, container}) {
+  const data = store.getState();
   const debug = document.querySelector('.debug-text')
   const btn = document.querySelector('.debug-update')
   const updateFromString = createUpdateFromStringAction(store)
@@ -31,6 +36,11 @@ export function initDebug (data, store, {timer}) {
   document.querySelector('.debug-start').addEventListener('click', timer.startTime.bind(timer))
   document.querySelector('.debug-stop').addEventListener('click', timer.stopTime.bind(timer))
 
+  if(container) {
+    createPIXIRenderer(container);
+  }
+
+
   // TODO
   // this._store.addMiddleware(require('redux-immutable-state-invariant')());
   // this._store.addMiddleware(require('redux-logger')({collapsed: true, duration: true}));
@@ -42,12 +52,35 @@ export function initDebug (data, store, {timer}) {
   // if (session) this._store.addEnhancer(require('redux-devtools').persistState(session));
 }
 
+export async function loadAssets() {
+  const loader = new PIXI.loaders.Loader();
+  const images = assets.images;
+
+  images.forEach((img) => loader.add(img.id, `../${img.src}`));
+
+  await new Promise(loader.load.bind(loader))
+}
+
 export function queryParam (val) {
   if (!window.location.search) return
 
   const exp = new RegExp(`[?&]${val}(=([^&#]*)|&|#|$)`)
 
   return exp.exec(window.location.search)[2]
+}
+
+export function createPIXIRenderer(stage) {
+  const r = new PIXI.WebGLRenderer(350, 730, {backgroundColor: 0x004D94});
+
+  document.querySelector('.pixi-app-wrapper').appendChild(r.view);
+
+  const render = (t) => {
+    requestAnimationFrame(render);
+
+    r.render(stage);
+  };
+
+  requestAnimationFrame(render);
 }
 
 /* eslint-disable */
